@@ -1,0 +1,181 @@
+/* Gradient Background Wrapper */
+.admin-teams-wrapper {
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: linear-gradient(135deg, #0f172a, #334155, #1e40af, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass Container */
+.admin-teams-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Headers */
+.admin-teams-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.admin-teams-container form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: #1e293b;
+}
+
+/* Form Section */
+.admin-teams-container form {
+  margin-bottom: 2rem;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 transparent;
+}
+
+.admin-teams-container form p {
+  margin: 0.5rem 0;
+}
+
+.success-msg {
+  color: #15803d;
+}
+
+.error-msg {
+  color: #b91c1c;
+}
+
+/* Inputs and Selects */
+.admin-teams-container form input,
+.admin-teams-container form select {
+  margin: 0.5rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Scrollbar Styling */
+.admin-teams-container form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-teams-container form::-webkit-scrollbar-thumb {
+  background-color: #94a3b8;
+  border-radius: 4px;
+}
+
+.admin-teams-container form::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Submit Button */
+.admin-teams-container form button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-teams-container form button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Scrollable Dropdown for Team Lead */
+.scrollable-select-wrapper {
+  position: relative;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0.5rem 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+}
+
+.scrollable-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.scrollable-select-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-select-wrapper::-webkit-scrollbar-thumb {
+  background-color: #94a3b8;
+  border-radius: 4px;
+}
+
+.scrollable-select-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Team Cards */
+.team-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.team-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.team-card p {
+  margin-bottom: 0.25rem;
+  color: #475569;
+}
+
+/* Buttons inside cards */
+.action-buttons button {
+  background-color: #334155;
+  color: white;
+  border: none;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: #1e293b;
+}

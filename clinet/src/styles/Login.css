@@ -1,0 +1,163 @@
+
+body, html {
+  background-color: #0d0d0d;
+  margin: 0;
+   padding: 0;
+  font-family: sans-serif;
+}
+
+.card {
+  background: #080000;
+  border-radius: 22px;
+  
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.card2 {
+  background-color: #171717;
+  border-radius: 22px;
+  padding: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0px 20px 40px 60px rgba(0, 255, 117, 0.3), 20px 20px 90px 90px rgba(0, 255, 117, 0.3)
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  box-shadow: 0px 40px 40px 40px rgba(236, 33, 7, 0.3);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2em;
+  background-color: #171717;
+  border-radius: 25px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+#heading {
+  text-align: center;
+  margin: 1.5em 0;
+  color: #ffffff;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  border-radius: 25px;
+  padding: 0.8em 1em;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  color: white;
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+  flex-shrink: 0;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+  font-size: 1rem;
+}
+
+.form .btn {
+  display: flex;
+  justify-content: center;
+  gap: 0.75em;
+  margin-top: 2em;
+}
+
+.button1 {
+  padding: 0.6em 1.5em;
+  border-radius: 5px;
+  background-color: #252525;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.button1:hover {
+  background-color: black;
+}
+
+.button2 {
+  padding: 0.6em 2em;
+  border-radius: 5px;
+  background-color: #252525;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.button2:hover {
+  background-color: black;
+}
+
+.button3 {
+  margin: 1.5em auto 1em;
+  padding: 0.6em 1.5em;
+  border-radius: 5px;
+  background-color: #252525;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+  display: block;
+}
+
+.button3:hover {
+  background-color: red;
+}
+
+.login-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .form {
+    padding: 1.5em;
+  }
+
+  #heading {
+    font-size: 1.4em;
+  }
+
+  .button1,
+  .button2,
+  .button3 {
+    font-size: 0.95rem;
+    padding: 0.5em 1.2em;
+  }
+}

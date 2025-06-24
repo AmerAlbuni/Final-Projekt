@@ -1,0 +1,98 @@
+.admin-analytics-wrapper {
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #4f46e5, #9333ea, #ec4899);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.admin-analytics-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.admin-analytics-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  text-align: center;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+}
+
+.analytics-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analytics-card p {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Optional percentage widget */
+.analytics-completion {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e40af;
+}
+
+.analytics-completion span {
+  font-weight: bold;
+  color: #16a34a;
+}
+
+/* Loading & error */
+.loading-msg,
+.error-msg {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+  color: #334155;
+}
+
+.error-msg {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}

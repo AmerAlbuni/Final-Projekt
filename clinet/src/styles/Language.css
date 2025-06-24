@@ -1,0 +1,15 @@
+.language {
+  position: absolute;
+  top: 20px;
+  right: 200px;
+  background-color: #6366f1;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  cursor: pointer;
+}
+.language-test {
+  cursor: pointer;
+
+  background-color: #6366f1;
+}

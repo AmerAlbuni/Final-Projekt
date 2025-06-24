@@ -1,0 +1,69 @@
+.notifications-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4f46e5, #9333ea, #ec4899);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+
+.notifications-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-container h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.mark-all-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.notification-item {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.notification-item:hover {
+  background: #f3f3f3;
+}
+
+.notification-item.unread {
+  font-weight: bold;
+  border-left: 4px solid #4f46e5;
+  background: #e9efff;
+}
+
+.notification-item.read {
+  opacity: 0.7;
+}
+
+.no-notifications {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
