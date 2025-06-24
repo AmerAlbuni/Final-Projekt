@@ -7,12 +7,13 @@
   transition: all 0.3s ease;
   overflow: hidden;
   z-index: 1;
+
   cursor: pointer;
 }
 .language-test {
   cursor: pointer;
   border-radius: 22px;
-  background-color: #6B6969;
+  background-color: #6b6969;
 }
 .language::before {
   content: "";
@@ -22,7 +23,7 @@
   right: -2px;
   bottom: -2px;
   z-index: -1;
-  background: linear-gradient(120deg, #90c2eba8, #070A0E);
+  background: linear-gradient(120deg, #90c2eba8, #070a0e);
   background-size: 300% 300%;
   border-radius: 25px;
   animation: moveNeon 5s linear infinite;
