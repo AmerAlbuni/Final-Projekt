@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
 // 🧱 Middleware Stack
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: true ,
   credentials: true,
 }));
 app.use(express.json());
