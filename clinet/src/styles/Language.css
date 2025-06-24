@@ -1,15 +1,30 @@
 .language {
   position: absolute;
   top: 20px;
-  right: 200px;
-  background-color: #6366f1;
-  border-radius: 0.5rem;
+  right: 20px;
+  border-radius: 22px;
   padding: 0.5rem;
-
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
   cursor: pointer;
 }
 .language-test {
   cursor: pointer;
-
-  background-color: #6366f1;
+  border-radius: 22px;
+  background-color: #6B6969;
+}
+.language::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(120deg, #90c2eba8, #070A0E);
+  background-size: 300% 300%;
+  border-radius: 25px;
+  animation: moveNeon 5s linear infinite;
+  filter: blur(6px);
 }
