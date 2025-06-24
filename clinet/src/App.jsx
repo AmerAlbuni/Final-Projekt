@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import './styles/Language.css';
@@ -30,24 +30,10 @@ import NotFound from "./pages/NotFound";
 
 
 function App() {
-  const { i18n } = useTranslation();
-
+  
   return (
     <div>
-      <div className="language">
-        <select
-          className="language-test"
-          value={i18n.language}
-          onChange={(e) => {
-            const lang = e.target.value;
-            i18n.changeLanguage(lang);
-            localStorage.setItem("lang", lang);
-          }}
-        >
-          <option value="en">🇺🇸 English</option>
-          <option value="de">🇩🇪 Deutsch</option>
-        </select>
-      </div>
+      
 
       <Routes>
         {/* Public */}

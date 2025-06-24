@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // This is now the Uiverse style
 
 const Login = () => {
+  const { i18n } = useTranslation();
+
   const { t } = useTranslation();
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -44,6 +46,21 @@ const Login = () => {
 
   return (
     <div className="card">
+    <div className="language">
+        <select
+          className="language-test"
+          value={i18n.language}
+          onChange={(e) => {
+            const lang = e.target.value;
+            i18n.changeLanguage(lang);
+            localStorage.setItem("lang", lang);
+          }}
+        >
+          <option value="en">🇺🇸 English</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="ar">🇸🇦 العربية</option>  
+        </select>
+      </div>
       <div className="card2">
         <form className="form" onSubmit={handleSubmit}>
           <p id="heading">{t('login.title')}</p>
