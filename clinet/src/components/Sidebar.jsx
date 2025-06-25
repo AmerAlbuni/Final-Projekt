@@ -1,5 +1,6 @@
-import '../styles/Sidebar.css'; // Ensure you have the correct path to your CSS file
-import { Home, ListCheck, Users, Calendar, Settings, LogOut } from 'lucide-react';
+import '../styles/Sidebar.css';
+import { Home, ListCheck, Users, Calendar, Settings, LogOut, Menu } from 'lucide-react';
+import { useState } from 'react';
 
 const navItems = [
   { name: 'Dashboard', icon: <Home />, href: '#' },
@@ -10,33 +11,40 @@ const navItems = [
 ];
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        TeamTasks
-      </div>
+    <>
+      {/* Mobile Toggle Button */}
+      <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
+        <Menu />
+      </button>
 
-      <nav className="sidebar-nav">
-        {navItems.map((item) => (
-          <a key={item.name} href={item.href} className="sidebar-link">
-            {item.icon}
-            <span>{item.name}</span>
-          </a>
-        ))}
-      </nav>
+      <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">TeamTasks</div>
 
-      <div className="sidebar-footer">
-        <button
-          className="sidebar-link logout-button"
-          onClick={() => {
-            const link = '/';
-            window.location.href = link;
-          }}
-        >
-          <LogOut />
-          <span>Logout</span>
-        </button>
-      </div>
-    </aside>
+        <nav className="sidebar-nav">
+          {navItems.map((item) => (
+            <a key={item.name} href={item.href} className="sidebar-link">
+              {item.icon}
+              <span>{item.name}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div className="sidebar-footer">
+          <button
+            className="sidebar-link logout-button"
+            onClick={() => {
+              const link = '/';
+              window.location.href = link;
+            }}
+          >
+            <LogOut />
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+    </>
   );
 }

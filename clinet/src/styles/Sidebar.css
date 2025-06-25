@@ -1,67 +1,77 @@
+/* Basislayout */
 .sidebar {
-  height: 100vh;
-  width: 12rem;
-  background-color: #1f2937; /* Tailwind's gray-900 */
+  width: 250px;
+  background-color: #1e1e2f;
   color: white;
+  height: 100vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
 .sidebar-header {
-  padding: 1.5rem;
   font-size: 1.5rem;
   font-weight: bold;
-  border-bottom: 1px solid #374151; /* gray-700 */
+  margin-bottom: 2rem;
 }
 
 .sidebar-nav {
   flex: 1;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .sidebar-link {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
   text-decoration: none;
-  color: inherit;
-  transition: background-color 0.2s ease-in-out;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
 .sidebar-link:hover {
-  background-color: #374151; /* gray-700 */
-}
-
-.sidebar-footer {
-  padding: 1rem;
-  border-top: 1px solid #374151;
+  background-color: #2d2d44;
 }
 
 .logout-button {
+  width: 100%;
   background: none;
   border: none;
-  width: 100%;
-  text-align: left;
+  color: white;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  border-radius: 0.5rem;
-  color: inherit;
-  transition: background-color 0.2s ease-in-out;
+  text-align: left;
 }
 
-.logout-button:hover {
-  background-color: #374151;
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  color: #1e1e2f;
+  z-index: 1001;
+  font-size: 1.5rem;
 }
-.sidebar-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: currentColor; /* Ensures the icon color matches the text */
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
 }
