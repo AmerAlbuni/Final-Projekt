@@ -3,11 +3,11 @@ import { Home, ListCheck, Users, Calendar, Settings, LogOut, Menu } from 'lucide
 import { useState } from 'react';
 
 const navItems = [
-  { name: 'Dashboard', icon: <Home />, href: '#' },
-  { name: 'Aufgaben', icon: <ListCheck />, href: '#' },
-  { name: 'Team', icon: <Users />, href: '#' },
-  { name: 'Kalender', icon: <Calendar />, href: '#' },
-  { name: 'Einstellungen', icon: <Settings />, href: '#' },
+  { name: 'Dashboard', icon: <Home />, href: "/admin", label: "Dashboard" },
+  { name: 'Analytics', icon: <ListCheck />, href: "/admin/analytics", label: "Analytics" },
+  { name: 'Team', icon: <Users />, href: "/admin/teams", label: "Teams"  },
+  { name: 'Projects', icon: <Calendar />, href: "/admin/projects", label: "Projects"  },
+  { name: 'Users', icon: <Settings />, href: "/admin/users", label: "Users"  },
 ];
 
 export default function Sidebar() {

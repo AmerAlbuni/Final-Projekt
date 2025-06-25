@@ -46,6 +46,9 @@ const Header = () => {
       </div>
 
       <div className="header-actions">
+        <div className="user-info">
+          <span className="user-name">{user.name}</span>
+          </div>
         <button
           className="notification-button"
           onClick={() => setShowDropdown((prev) => !prev)}
@@ -80,9 +83,9 @@ const Header = () => {
           </div>
         )}
 
-        <button onClick={() => { logout(); navigate("/"); }}>
+        {/* <button onClick={() => { logout(); navigate("/"); }}>
           Logout
-        </button>
+        </button> */}
       </div>
     </header>
   );
