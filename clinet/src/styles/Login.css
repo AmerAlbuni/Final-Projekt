@@ -1,5 +1,5 @@
 .card {
-  background: url(../../public/background.jpg);
+  background: url(/background.jpg);
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
