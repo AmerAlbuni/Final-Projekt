@@ -2,26 +2,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", sans-serif;
-  background-color: #2c3e50; 
-  min-height: 100vh;
+ 
+  
+   background-image:url('../../../public/9.jpg');
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .main-content {
   display: flex;
   
 }
 .sidebar {
- 
-  background-color: #2c3e50; 
+
   color: white;
   padding: 20px;
-  height: 110vh;
+  height: 80vh;
   margin: 0;
 }
 .content-area {
+  
   flex: 1;
   padding: 20px;
   margin: 0;
-  background-color: #2c3e50;
-  min-height: 100vh;
+  
+  min-height: 84.7vh;
   overflow-y: auto;
 }
