@@ -55,13 +55,16 @@
   color: #1e1e2f;
   z-index: 1001;
   font-size: 1.5rem;
+
 }
 
 @media (max-width: 768px) {
   .mobile-toggle {
     display: block;
   }
-
+.mobile-toggle:hover {
+    background-color: #90c2eba8;
+  }
   .sidebar {
     position: fixed;
     top: 0;
