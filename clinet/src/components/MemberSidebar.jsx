@@ -3,14 +3,12 @@ import { Home, ListCheck, Users, Calendar, Settings, LogOut, Menu } from 'lucide
 import { useState } from 'react';
 
 const navItems = [
-  { name: 'Dashboard', icon: <Home />, href: "/admin", label: "Dashboard" },
-  { name: 'Analytics', icon: <ListCheck />, href: "/admin/analytics", label: "Analytics" },
-  { name: 'Team', icon: <Users />, href: "/admin/teams", label: "Teams"  },
-  { name: 'Projects', icon: <Calendar />, href: "/admin/projects", label: "Projects"  },
-  { name: 'Users', icon: <Settings />, href: "/admin/users", label: "Users"  },
+  { name: 'Dashboard', icon: <Home />, href: "/member", label: "Dashboard" },
+  { name: 'Analytics', icon: <ListCheck />, href: "/member/tasks", label: "My Tasks"  },
+
 ];
 
-export default function AdminSidebar() {
+export default function MemberSidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
