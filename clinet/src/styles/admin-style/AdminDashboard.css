@@ -1,26 +1,21 @@
-.admin-dashboard-wrapper {
+/* .admin-dashboard-wrapper {
  
-  height: 60vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: linear-gradient(135deg, #e2e8f0, #cbd5e1);  */
   padding: 2rem;
 }
 
 .admin-dashboard-container {
   
-  /* background: rgba(255, 255, 255, 0.75);  */
-  backdrop-filter: blur(1px);           /* glass effect */
-  -webkit-backdrop-filter: blur(12px);   /* Safari support */
-  padding: 3rem;
-  /* border-radius: 1.5rem; */
-  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
-  width: 100%;
-  max-width: 1000px;
   
-}
+  padding: 3rem;
+  border-radius: 1.5rem;
+height:100%;
+  width: 100%;
 
+}
 
 .admin-dashboard-header {
   text-align: center;
@@ -44,12 +39,6 @@
   gap: 2rem;
  
 }
-.card-border-wrapper{
-   transform-style: preserve-3d;
-  transition: transform 100ms;
-  box-shadow: 0px 0px 10px 1px #000000ee;
-     
-}
 
 .admin-card {
   position: relative;
@@ -57,30 +46,62 @@
   border-radius: 1rem;
   text-align: center;
   cursor: pointer;
-  z-index: 1;
-  background-color: #f1f5f9;
+  background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  z-index: 0;
+  border: 2px solid transparent;
 }
 
 
+.admin-card::before,
+.admin-card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
 
 
-/* Animation */
-@keyframes borderAnimation {
+.admin-card::before {
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #00ffe1, transparent);
+  border-image-slice: 1;
+  animation: borderRun 2s linear infinite;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 100%, 0% 100%
+  );
+}
+
+.admin-card::after {
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #7f00ff, transparent);
+  border-image-slice: 1;
+  animation: borderRun 2s linear infinite reverse;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 100%, 0% 100%
+  );
+}
+
+@keyframes borderRun {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    transform: translate(0, 0) rotate(0deg);
   }
   100% {
-    background-position: 0% 50%;
+    transform: translate(0, 0) rotate(360deg);
   }
 }
 
 
 
-
+h2,p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 0.5rem;
+}
 
 .admin-card:hover {
   background-color: #816733b6;
@@ -96,7 +117,177 @@
 }
 
 
+.analys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+} */
+
+/* .admin-card {
+  background-color: #f1f5f9;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+} */
+
 /*
 
  animation: rotation_481 5000ms infinite linear;
 */
+
+
+/* .card-border-wrapper{
+  
+
+     
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Layout */
+.admin-dashboard-wrapper {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.admin-dashboard-container {
+  padding: 3rem;
+  border-radius: 1.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.admin-dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.admin-dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.admin-dashboard-subtitle {
+  font-size: 1rem;
+  color: #475569;
+}
+
+.admin-dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* ============================= */
+/* 🔥 Animated Gradient Border  */
+/* ============================= */
+
+.card-border-wrapper {
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #213,
+    #112 5%,
+    #112 60%,
+    #213 95%
+  );
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    rgb(117, 96, 3),
+    rgb(88, 76, 8) 99%,
+    transparent
+  );
+
+  position: relative;
+  border: solid 4px transparent;
+  border-radius: 1rem;
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  animation: bg-spin 3s linear infinite;
+  transition: all 0.3s ease;
+}
+
+/* Optional: Pause animation on hover */
+/* .card-border-wrapper:hover {
+  animation-play-state: paused;
+} */
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+/* Registering the custom property for animation */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+/* ============================= */
+/* 🧩 Admin Card Inner Content  */
+/* ============================= */
+
+.admin-card {
+  position: relative;
+  padding: 1.5rem;
+  /* border-radius: 1rem; */
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(44, 29, 8, 0.61);
+  transition: transform 0.3s ease;
+}
+
+.admin-card:hover {
+ 
+  transform: translateY(-5px);
+}
+
+/* Typography */
+h2,
+p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 0.5rem;
+}
+
+/* Special styling for Analytics card */
+.analys {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 66%;
+}
+
+
+
+

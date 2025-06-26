@@ -4,7 +4,7 @@ body {
   font-family: "Segoe UI", sans-serif;
  
   
-   background-image:url('../../../public/9.jpg');
+   background-image:url('/9.jpg');
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body {
   flex: 1;
   padding: 20px;
   margin: 0;
-  
-  min-height: 84.7vh;
+  height: 90vh;
+  min-height: 80vh;
   overflow-y: auto;
 }
