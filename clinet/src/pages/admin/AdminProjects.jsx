@@ -110,15 +110,15 @@ const AdminProjects = () => {
   return (
     <div className="admin-projects-wrapper">
       <div className="admin-projects-container">
-        <h1>📁 Manage Projects</h1>
+        <h1> Manage Projects</h1>
 
-        <form onSubmit={handleCreate}>
+        <form className='create-form' onSubmit={handleCreate}>
           <h2>Create New Project</h2>
           {message && <p>{message}</p>}
           {error && <p>{error}</p>}
 
-          <div>
-            <input
+          <div className='input'>
+            <input 
               type="text"
               placeholder="Title"
               value={title}
@@ -164,9 +164,9 @@ const AdminProjects = () => {
             {projects.map((proj) => (
               <div className="project-card" key={proj._id}>
                 <h3>{proj.title}</h3>
-                <p><strong>Description:</strong> {proj.description}</p>
-                <p><strong>Deadline:</strong> {proj.deadline?.substring(0, 10) || '—'}</p>
-                <p><strong>Team:</strong> {proj.team?.name || '—'}</p>
+                <p className='para'>Description: {proj.description}</p>
+                <p className='para'>Deadline:{proj.deadline?.substring(0, 10) || '—'}</p>
+                <p className='para'>Team: {proj.team?.name || '—'}</p>
                 <button onClick={() => handleDelete(proj._id)}>🗑️ Delete</button>
               </div>
             ))}

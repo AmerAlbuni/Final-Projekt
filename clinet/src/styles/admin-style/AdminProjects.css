@@ -1,116 +1,133 @@
-
+/* 🌆 Page Wrapper */
 .admin-projects-wrapper {
-  min-height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #4f46e5, #9333ea, #ec4899);
   padding: 2rem;
 }
 
+/* 🧊 Glass Container */
 .admin-projects-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: transparent;
   padding: 3rem;
   border-radius: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1100px;
+  box-sizing: border-box;
+}
+
+/* 📄 Create Form */
+.create-form {
+  box-shadow: #ff9900 0px 0px 20px, #ff5e00 0px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  justify-items: center!important; ;
+  align-items: center !important;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 88%;
+}
+
+/* 🧱 Form Fields */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  
 }
 
 
+/* 📝 Form Inputs + Select */
 form input,
 form select {
-  margin: 0.5rem;
   padding: 0.6rem;
   border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
   font-size: 1rem;
-  width: calc(100% - 1rem);
+  width: 100%;
   max-width: 400px;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid #ff9900;
+  color: rgb(255, 255, 255);
 }
 
-
+/* 🟪 Submit Button */
 form button {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
-  background-color: #6366f1;
+  background-color: transparent;
+  box-shadow: #ff9900 0px 0px 20px, #ff5e00 0px 0px 40px;
   color: white;
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
+  width: fit-content;
 }
 
 form button:hover {
-  background-color: #4f46e5;
+  background-color: #ff5e00;
+  box-shadow: 0 0 25px #ff9900, 0 0 45px #ff5e00;
 }
 
-
-table {
-  width: 100%;
-  margin-top: 2rem;
-  border-collapse: collapse;
-}
-
-thead {
-  background-color: #6366f1;
-  color: white;
-}
-
-th,
-td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-
-button {
-  background-color: #ef4444;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border: none;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-button:hover {
-  background-color: #dc2626;
-}
-
-.project-grid {
+/* 🔲 Project Grid */
+/* .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
+  width: 100%;
+ 
+} */
+
+/* ✨ Glowing Project Card */
+.project-card {
+  background-color: transparent !important;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+   box-sizing: border-box;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00 !important;
+  
+ 
+ 
 }
 
-.project-card {
-  background-color: #f9fafb;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
-}
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 0 14px #ff9900, 0 0 32px #ff5e00;
 }
 
 .project-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
-.project-card p {
+.para {
   margin: 0.25rem 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff !important;
 }
 
+/* 🗑️ Delete Button */
 .project-card button {
   background-color: #ef4444;
   color: white;
@@ -120,8 +137,60 @@ button:hover {
   cursor: pointer;
   font-size: 0.85rem;
   margin-top: 1rem;
+  transition: background-color 0.2s ease;
 }
 
 .project-card button:hover {
   background-color: #dc2626;
+}
+@media (min-width: 1200px) {
+ 
+
+  .create-form {
+    width: 92%;
+    box-shadow: #ff9900 0px 0px 20px, #ff5e00 0px 0px 40px;
+ 
+  }
+  
+
+ 
+}
+/* 📱 Responsive – Tablets */
+@media (max-width: 768px) {
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+ 
+  form input,
+  form select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  form button {
+    width: 100%;
+  }
+}
+
+/* 📟 Responsive – Small Phones */
+@media (max-width: 480px) {
+  .admin-projects-container {
+    padding: 1.5rem;
+  }
+  .create-form {
+    width: 90%;
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+  }
 }

@@ -118,27 +118,30 @@ const AdminUsers = () => {
   return (
     <div className="admin-users-wrapper">
       <div className="admin-users-container">
-        <h1>👥 Manage Users</h1>
+        <h1> Manage Users</h1>
 
         <form onSubmit={handleAddUser}>
+
+          <div className='user-form' >
           <h2>Add New User</h2>
           {message && <p>{message}</p>}
           {error && <p>{error}</p>}
 
-          <div>
-            <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" />
-            <input name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email" />
-            <input name="password" value={form.password} onChange={handleChange} required type="password" placeholder="Password" />
-            <select name="role" value={form.role} onChange={handleChange}>
-              <option value="Admin">Admin</option>
-              <option value="TeamLead">TeamLead</option>
-              <option value="Member">Member</option>
+          
+            <input className='input' name="name" value={form.name} onChange={handleChange} required placeholder="Name" />
+            <input className='input' name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email" />
+            <input className='input' name="password" value={form.password} onChange={handleChange} required type="password" placeholder="Password" />
+            <select className='role' name="role" value={form.role} onChange={handleChange}>
+              <option className='option' value="Admin">Admin</option>
+              <option className='option' value="TeamLead">TeamLead</option>
+              <option className='option' value="Member">Member</option>
             </select>
-          </div>
+          
 
-          <button type="submit" disabled={formLoading}>
-            {formLoading ? 'Creating...' : '➕ Add User'}
+          <button className='add-button' type="submit" disabled={formLoading}>
+            {formLoading ? 'Creating...' : ' Add User'}
           </button>
+          </div>
         </form>
 
         {loading ? (
