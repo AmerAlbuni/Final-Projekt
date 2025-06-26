@@ -11,27 +11,22 @@ const TeamLeadDashboard = () => {
     <div className="lead-dashboard-wrapper">
       <div className="lead-dashboard-container">
         <div className="lead-dashboard-header">
-          <h1>🧑‍💼 Team Lead Dashboard</h1>
-          <button onClick={logout} className="logout-btn">Logout</button>
+          <h1> Team Lead Dashboard</h1>
         </div>
-
-        <p className="welcome-text">
-          Welcome, <strong>{user?.name}</strong> ({user?.role})
-        </p>
 
         <div className="lead-nav-grid">
           <div className="lead-nav-card" onClick={() => navigate('/lead/projects')}>
-            <h2>📁 Projects</h2>
+            <h2> Projects</h2>
             <p>View your assigned projects.</p>
           </div>
 
           <div className="lead-nav-card" onClick={() => navigate('/lead/kanban')}>
-            <h2>✅ Task Board</h2>
+            <h2> Task Board</h2>
             <p>Manage tasks in Kanban style.</p>
           </div>
 
           <div className="lead-nav-card" onClick={() => navigate('/lead/team')}>
-            <h2>👥 Team Members</h2>
+            <h2> Team Members</h2>
             <p>Invite or view your team members.</p>
           </div>
         </div>
