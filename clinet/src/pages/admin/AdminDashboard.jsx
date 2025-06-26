@@ -40,7 +40,7 @@ const AdminDashboard = () => {
   </div>
 
   <div className="card-border-wrapper" onClick={() => navigate('/admin/analytics')}>
-    <div className="admin-card analys">
+    <div className="admin-card ">
       <h2> Analytics</h2>
       <p>View progress and productivity.</p>
     </div>

@@ -25,7 +25,9 @@ body {
   flex: 1;
   padding: 20px;
   margin: 0;
-  height: 90vh;
+  height: 84.6vh;
+  
   min-height: 80vh;
   overflow-y: auto;
+  
 }
