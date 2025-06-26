@@ -89,7 +89,7 @@ const TeamChat = () => {
   };
 
   return (
-    <div style={{ background: "white", borderRadius: "1rem", padding: "1rem" }}>
+    <div style={{  borderRadius: "1rem", padding: "1rem" }}>
       <h2>💬 Team Chat</h2>
       <div style={{ maxHeight: "300px", overflowY: "auto", marginBottom: "1rem" }}>
         {messages.map((msg) => (
@@ -131,7 +131,7 @@ const TeamChat = () => {
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           style={{ flexGrow: 1, padding: "0.5rem" }}
         />
-        <button onClick={sendMessage} style={{ padding: "0.5rem 1rem" }}>
+        <button onClick={sendMessage} style={{ padding: "0.5rem 1rem", background: "#ff9900", color: "#fff", border: "none", borderRadius: "0.25rem" }}>
           Send
         </button>
       </div>
