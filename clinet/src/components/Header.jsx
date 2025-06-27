@@ -11,24 +11,24 @@ const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const links = {
-    Admin: [
-      { to: "/admin", label: "Dashboard" },
-      { to: "/admin/users", label: "Users" },
-      { to: "/admin/projects", label: "Projects" },
-      { to: "/admin/teams", label: "Teams" },
-      { to: "/admin/analytics", label: "Analytics" },
-    ],
-    TeamLead: [
-      { to: "/lead", label: "Dashboard" },
-      { to: "/lead/kanban", label: "Kanban" },
-      { to: "/lead/projects", label: "Projects" },
-      { to: "/lead/team", label: "Team" },
-      { to: "/lead/analytics", label: "Analytics" },
-    ],
-    Member: [
-      { to: "/member", label: "Dashboard" },
-      { to: "/member/tasks", label: "My Tasks" },
-    ],
+    // Admin: [
+    //   { to: "/admin", label: "Dashboard" },
+    //   { to: "/admin/users", label: "Users" },
+    //   { to: "/admin/projects", label: "Projects" },
+    //   { to: "/admin/teams", label: "Teams" },
+    //   { to: "/admin/analytics", label: "Analytics" },
+    // ],
+    // TeamLead: [
+    //   { to: "/lead", label: "Dashboard" },
+    //   { to: "/lead/kanban", label: "Kanban" },
+    //   { to: "/lead/projects", label: "Projects" },
+    //   { to: "/lead/team", label: "Team" },
+    //   { to: "/lead/analytics", label: "Analytics" },
+    // ],
+    // Member: [
+    //   { to: "/member", label: "Dashboard" },
+    //   { to: "/member/tasks", label: "My Tasks" },
+    // ],
   };
 
   const unreadCount = notifications.filter((n) => !n.read).length;
@@ -38,6 +38,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="nav-links">
+        <div className="sidebar-header">TeamTasks</div>
         {links[user.role]?.map((link) => (
           <Link key={link.to} to={link.to}>
             {link.label}

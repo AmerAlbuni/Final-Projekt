@@ -21,8 +21,6 @@ export default function AdminSidebar() {
       </button>
 
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <div className="sidebar-header">TeamTasks</div>
-
         <nav className="sidebar-nav">
           {navItems.map((item) => (
             <a key={item.name} href={item.href} className="sidebar-link">
