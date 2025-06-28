@@ -39,11 +39,11 @@ const Header = () => {
     <header className="header">
       <div className="nav-links">
         <div className="sidebar-header">TeamTasks</div>
-        {links[user.role]?.map((link) => (
+        {/* {links[user.role]?.map((link) => (
           <Link key={link.to} to={link.to}>
             {link.label}
           </Link>
-        ))}
+        ))} */}
       </div>
 
       <div className="header-actions">
