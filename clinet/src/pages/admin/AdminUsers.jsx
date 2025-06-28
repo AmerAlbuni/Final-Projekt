@@ -1,7 +1,10 @@
+// AdminUsers.jsx
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
-import "../../styles/admin-style/AdminUsers.css"; // Adjust the path as necessary
+import Select from 'react-select';
+import "../../styles/admin-style/AdminUsers.css";
+
 const AdminUsers = () => {
   const { token } = useAuth();
   const [users, setUsers] = useState([]);
@@ -121,26 +124,32 @@ const AdminUsers = () => {
         <h1 className='user-h1'> Manage Users</h1>
 
         <form onSubmit={handleAddUser}>
+          <div className='user-form'>
+            <h2>Add New User</h2>
+            {message && <p>{message}</p>}
+            {error && <p>{error}</p>}
 
-          <div className='user-form' >
-          <h2>Add New User</h2>
-          {message && <p>{message}</p>}
-          {error && <p>{error}</p>}
-
-          
             <input className='input' name="name" value={form.name} onChange={handleChange} required placeholder="Name" />
             <input className='input' name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email" />
             <input className='input' name="password" value={form.password} onChange={handleChange} required type="password" placeholder="Password" />
-            <select className='role' name="role" value={form.role} onChange={handleChange}>
-              <option className='option' value="Admin">Admin</option>
-              <option className='option' value="TeamLead">TeamLead</option>
-              <option className='option' value="Member">Member</option>
-            </select>
-          
 
-          <button className='add-button' type="submit" disabled={formLoading}>
-            {formLoading ? 'Creating...' : ' Add User'}
-          </button>
+            <Select
+              classNamePrefix="react-select"
+              options={[
+                { value: 'Admin', label: 'Admin' },
+                { value: 'TeamLead', label: 'TeamLead' },
+                { value: 'Member', label: 'Member' },
+              ]}
+              value={{ value: form.role, label: form.role }}
+              onChange={(selected) => setForm({ ...form, role: selected.value })}
+              placeholder="Select Role"
+              menuPosition="fixed"
+              menuPlacement="auto"
+            />
+
+            <button className='add-button' type="submit" disabled={formLoading}>
+              {formLoading ? 'Creating...' : ' Add User'}
+            </button>
           </div>
         </form>
 
@@ -155,14 +164,20 @@ const AdminUsers = () => {
                 <p>
                   <strong>Role:</strong>{' '}
                   {editingUserId === user._id ? (
-                    <select className='select-role'
-                      value={editedUser.role}
-                      onChange={(e) => setEditedUser({ ...editedUser, role: e.target.value })}
-                    >
-                      <option value="Admin">Admin</option>
-                      <option value="TeamLead">TeamLead</option>
-                      <option value="Member">Member</option>
-                    </select>
+                    <Select
+                      classNamePrefix="react-select"
+                      options={[
+                        { value: 'Admin', label: 'Admin' },
+                        { value: 'TeamLead', label: 'TeamLead' },
+                        { value: 'Member', label: 'Member' },
+                      ]}
+                      value={{ value: editedUser.role, label: editedUser.role }}
+                      onChange={(selected) =>
+                        setEditedUser({ ...editedUser, role: selected.value })
+                      }
+                      menuPosition="fixed"
+                      menuPlacement="auto"
+                    />
                   ) : (
                     user.role
                   )}
@@ -170,17 +185,23 @@ const AdminUsers = () => {
                 <p>
                   <strong>Team:</strong>{' '}
                   {editingUserId === user._id ? (
-                    <select
-                      value={editedUser.team ?? ''}
-                      onChange={(e) => setEditedUser({ ...editedUser, team: e.target.value })}
-                    >
-                      <option value="">—</option>
-                      {teams.map((team) => (
-                        <option key={team._id} value={team._id}>
-                          {team.name}
-                        </option>
-                      ))}
-                    </select>
+                    <Select
+                      classNamePrefix="react-select"
+                      options={teams.map((team) => ({
+                        value: team._id,
+                        label: team.name,
+                      }))}
+                      value={teams.find((t) => t._id === editedUser.team) ? {
+                        value: editedUser.team,
+                        label: teams.find((t) => t._id === editedUser.team)?.name
+                      } : null}
+                      onChange={(selected) =>
+                        setEditedUser({ ...editedUser, team: selected?.value || '' })
+                      }
+                      placeholder="Select Team"
+                      menuPosition="fixed"
+                      menuPlacement="auto"
+                    />
                   ) : (
                     user.team?.name || '—'
                   )}

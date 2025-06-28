@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import Select from 'react-select';
 import '../../styles/admin-style/AdminProjects.css';
 
 const AdminProjects = () => {
@@ -15,8 +16,6 @@ const AdminProjects = () => {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-
-
 
   const fetchProjects = async () => {
     try {
@@ -110,14 +109,14 @@ const AdminProjects = () => {
   return (
     <div className="admin-projects-wrapper">
       <div className="admin-projects-container">
-        <h1 className='project-h1'> Manage Projects</h1>
+        <h1 className="project-h1"> Manage Projects</h1>
 
-        <form className='create-form' onSubmit={handleCreate}>
+        <form className="create-form" onSubmit={handleCreate}>
           <h2>Create New Project</h2>
           {message && <p>{message}</p>}
           {error && <p>{error}</p>}
 
-          <div className='input'>
+          <div className="input">
             <input 
               type="text"
               placeholder="Title"
@@ -138,18 +137,22 @@ const AdminProjects = () => {
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
             />
-            <select
-              value={teamId}
-              onChange={(e) => setTeamId(e.target.value)}
+            <Select
+              classNamePrefix="react-select"
+              className="react-select"
+              options={teams.map((team) => ({
+                value: team._id,
+                label: team.name,
+              }))}
+              value={
+                teams.find((t) => t._id === teamId)
+                  ? { value: teamId, label: teams.find((t) => t._id === teamId)?.name }
+                  : null
+              }
+              onChange={(selected) => setTeamId(selected?.value)}
+              placeholder="Select Team"
               required
-            >
-              <option value="">Select Team</option>
-              {teams.map((team) => (
-                <option key={team._id} value={team._id}>
-                  {team.name}
-                </option>
-              ))}
-            </select>
+            />
           </div>
 
           <button type="submit" disabled={creating}>
@@ -164,9 +167,9 @@ const AdminProjects = () => {
             {projects.map((proj) => (
               <div className="project-card" key={proj._id}>
                 <h3>{proj.title}</h3>
-                <p className='para'>Description: {proj.description}</p>
-                <p className='para'>Deadline:{proj.deadline?.substring(0, 10) || '—'}</p>
-                <p className='para'>Team: {proj.team?.name || '—'}</p>
+                <p className="para">Description: {proj.description}</p>
+                <p className="para">Deadline: {proj.deadline?.substring(0, 10) || '—'}</p>
+                <p className="para">Team: {proj.team?.name || '—'}</p>
                 <button onClick={() => handleDelete(proj._id)}>🗑️ Delete</button>
               </div>
             ))}
