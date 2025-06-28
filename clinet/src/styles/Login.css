@@ -24,37 +24,10 @@
   z-index: 1;
 }
 
-/* .card2::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  z-index: -1;
-  background: linear-gradient(120deg, #ebb190a8, #070a0e);
-  background-size: 300% 300%;
-  border-radius: 25px;
-  animation: moveNeon 5s linear infinite;
-  filter: blur(6px);
-} */
-
-@keyframes moveNeon {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1em;
   padding: 5rem 5rem 5rem 5rem;
   background-color:transparent;
   border-radius: 25px;
@@ -97,7 +70,7 @@
   width: 100%;
   color: #d3d3d3;
   font-size: 1rem;
-  padding-right: 3rem;
+  padding: 1rem 1.5rem;
 }
 
 .form .btn {

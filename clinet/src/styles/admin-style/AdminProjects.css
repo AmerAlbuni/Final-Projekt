@@ -6,13 +6,12 @@
   
   align-items: center;
   justify-content: center;
-  padding: 2rem;
 }
 
 /* 🧊 Glass Container */
 .admin-projects-container {
   background: transparent;
-  padding: 3rem;
+  padding: 0 12rem 3rem 0;
   border-radius: 1.5rem;
   width: 100%;
   max-width: 1100px;
