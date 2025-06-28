@@ -14,6 +14,9 @@
 .card2 {
   position: relative;
   background-color: transparent;
+  box-shadow: 0 0 20px #ebc490a8,
+    0 0 30px #ebc190a8,
+    inset 0 0 10px #000000;
   border-radius: 22px;
   padding: 0.5rem;
   transition: all 0.3s ease;
@@ -21,7 +24,7 @@
   z-index: 1;
 }
 
-.card2::before {
+/* .card2::before {
   content: "";
   position: absolute;
   top: -2px;
@@ -34,7 +37,7 @@
   border-radius: 25px;
   animation: moveNeon 5s linear infinite;
   filter: blur(6px);
-}
+} */
 
 @keyframes moveNeon {
   0% {
@@ -53,7 +56,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 5rem 5rem 5rem 5rem;
-  background-color: #2a2a2a;
+  background-color:transparent;
   border-radius: 25px;
   width: 100%;
 
