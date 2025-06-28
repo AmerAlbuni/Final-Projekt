@@ -118,7 +118,7 @@ const AdminUsers = () => {
   return (
     <div className="admin-users-wrapper">
       <div className="admin-users-container">
-        <h1> Manage Users</h1>
+        <h1 className='user-h1'> Manage Users</h1>
 
         <form onSubmit={handleAddUser}>
 
@@ -155,7 +155,7 @@ const AdminUsers = () => {
                 <p>
                   <strong>Role:</strong>{' '}
                   {editingUserId === user._id ? (
-                    <select
+                    <select className='select-role'
                       value={editedUser.role}
                       onChange={(e) => setEditedUser({ ...editedUser, role: e.target.value })}
                     >

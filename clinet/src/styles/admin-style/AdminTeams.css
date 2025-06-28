@@ -1,52 +1,41 @@
 /* Gradient Background Wrapper */
 .admin-teams-wrapper {
   min-height: 100vh;
-  padding: 3rem 1rem;
   display: flex;
   justify-content: center;
   align-items: start;
-  background: linear-gradient(135deg, #0f172a, #334155, #1e40af, #0ea5e9);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
 }
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* Glass Container */
 .admin-teams-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
+  background: transparent;
   border-radius: 1.5rem;
   padding: 2rem;
   width: 100%;
   max-width: 1000px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Headers */
 .admin-teams-container h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #0f172a;
+  color: #ffffff;
 }
 
 .admin-teams-container form h2 {
   margin-bottom: 1rem;
   font-size: 1.3rem;
-  color: #1e293b;
+  color: #ffffff;
 }
 
 /* Form Section */
 .admin-teams-container form {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   max-height: 500px;
-  overflow-y: auto;
   padding-right: 0.5rem;
-  scrollbar-width: thin;
   scrollbar-color: #94a3b8 transparent;
 }
 
@@ -76,10 +65,11 @@
 /* Scrollbar Styling */
 .admin-teams-container form::-webkit-scrollbar {
   width: 8px;
+  background-color: black;
 }
 
 .admin-teams-container form::-webkit-scrollbar-thumb {
-  background-color: #94a3b8;
+  background-color: #036cff;
   border-radius: 4px;
 }
 
@@ -89,19 +79,19 @@
 
 /* Submit Button */
 .admin-teams-container form button {
-  background-color: #2563eb;
-  color: white;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  /* box-shadow: 0 0 20px #050300, 0 0 40px #ff0000; */
 }
 
 .admin-teams-container form button:hover {
-  background-color: #1d4ed8;
+  background-color: #ff9900;
 }
 
 /* Scrollable Dropdown for Team Lead */
@@ -110,20 +100,38 @@
   max-height: 200px;
   overflow-y: auto;
   margin: 0.5rem 0;
-  border: 1px solid #cbd5e1;
+  box-shadow: 0 6px 20px #ff9900, 0 0 25px #ff5e00;
   border-radius: 0.5rem;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .scrollable-select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: none;
+  border: none !important;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.2rem !important;
   background-color: transparent;
   appearance: none;
   cursor: pointer;
+}
+.input {
+  margin-top: 2rem !important;
+  padding: 1.3rem 1rem !important;
+  border: none !important;
+  box-shadow: 0 6px 20px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.member {
+  margin: 2rem 0 !important;
+  width: 100%;
+  padding: 1.3rem 1rem !important;
+  border: none !important;
+  box-shadow: 0 6px 20px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .scrollable-select-wrapper::-webkit-scrollbar {
@@ -131,7 +139,7 @@
 }
 
 .scrollable-select-wrapper::-webkit-scrollbar-thumb {
-  background-color: #94a3b8;
+  background-color: #ffffff;
   border-radius: 4px;
 }
 
@@ -147,29 +155,38 @@
 }
 
 .team-card {
-  background: white;
+  background: transparent;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px #ff9900, 0 0 25px #ff5e00;
+  margin-top: 2rem;
 }
-
+.team-h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  margin: auto;
+  text-shadow: 0 0 5px #fff, 0 0 10px #cc4500, 0 0 20px #cc4500,
+    0 0 40px #cc4500;
+}
 .team-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #1e293b;
+  color: #ffffff;
 }
 
 .team-card p {
   margin-bottom: 0.25rem;
-  color: #475569;
+  color: #ffffff;
 }
 
 /* Buttons inside cards */
 .action-buttons button {
-  background-color: #334155;
+  background-color: transparent;
   color: white;
   border: none;
   margin-right: 0.5rem;
+  box-shadow: 0 0px 20px #ff9900, 0 0 5px #ff5e00;
+
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   border-radius: 0.5rem;
@@ -177,5 +194,5 @@
 }
 
 .action-buttons button:hover {
-  background-color: #1e293b;
+  background-color: #ff9900;
 }

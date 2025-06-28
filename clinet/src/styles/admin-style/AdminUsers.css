@@ -12,8 +12,6 @@
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
- 
-  
 }
 
 .user-card:hover {
@@ -26,12 +24,14 @@
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: #fff;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .user-card p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
   color: #ddd;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .user-card select {
@@ -49,108 +49,112 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  
-}
-.add-button {
-  background-color:#ff5e0054 ;
-  margin-bottom: 1rem;
-  box-shadow: #000000 0px 10px 10px;
- 
-}
-.add-button:hover{
-   background-color:#080706b9;
-    transform: translateY(-2px);
 }
 
 .user-actions button {
-  background-color: #ff5e00;
+  background-color: transparent;
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
   color: white;
   border: none;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
   font-size: 0.85rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .user-actions button:hover {
-  background-color: #cc4500;
-   transform: translateY(-4px);
- 
+  background-color: #ff9900;
+  transform: translateY(-4px);
 }
-.admin-users-container{
-  text-align: center;
 
+.add-button {
+  background-color: transparent;
+  margin-bottom: 1rem;
 }
-h1, h2{
-  color:white;
-  margin-bottom: 2rem;
+
+.add-button:hover {
+  background-color: #ff9900;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
 }
-h1 {
-  font-size: 3.5rem;
-  margin-top: 1rem;
+
+/* 📄 Form Container */
+.user-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
- 
-margin: 2rem auto;
-width: 30rem;
-text-shadow: 0 0 5px #fff,
-    0 0 10px #cc4500,
-    0 0 20px #cc4500,
-    0 0 40px #cc4500; 
-
+  border-radius: 1rem;
+  margin: 2rem auto;
+  width: 87%;
+  max-width: 600px;
+  padding: 2rem;
+  box-shadow: #cc4500 0px 0px 30px;
+  box-sizing: border-box;
 }
-.input{
+
+/* 🔡 Input + Select Styling */
+.input {
   background-color: transparent;
-  
+  width: 100%;
 }
-.input::placeholder {
-  color: white;
-  font-size: 1.2rem;
 
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.582);
+  font-size: 1.2rem;
 }
+
 .role {
-  background-color: #1a0a00;
-  color: #fff;
-  border: 2px solid #ff9900;
+  background-color: transparent;
+ margin: 1rem 0;
   border-radius: 0.5rem;
   padding: 0.6rem 1rem;
   font-size: 1rem;
   font-weight: bold;
   box-shadow: 0 0 8px #ff5e00;
   outline: none;
-  appearance: none; /* hides default arrow on some browsers */
+  appearance: none;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  width: 100%;
 }
 
 .role:hover {
-  box-shadow: 0 0 12px #ff9900;
-}
+  box-shadow: 0 0 20px #ff9900, 0 0 20px #ff5e00;}
+
 .option {
-  
-  background-color:#ff5e00; ;
+  background-color: #ff5e00;
   padding: 0.5rem;
   font-weight: bold;
 }
-.user-form{
+
+/* 🔠 Typography Overrides */
+h1, h2 {
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.user-h1 {
+  font-size: 3rem;
+  margin: 2rem auto;
+  text-shadow: 0 0 5px #fff,
+               0 0 10px #cc4500,
+               0 0 20px #cc4500,
+               0 0 40px #cc4500;
+  width: 100%;
+  max-width: 90%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 1rem;
- margin: auto;
-   width: 30rem;
-  box-shadow: #cc4500 0px 0px 30px;
- 
-   
-
+  text-align: center;
 }
+
 /* 🧩 Responsive Grid Layout */
 .user-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   justify-items: center;
   margin: 2rem;
@@ -168,11 +172,11 @@ text-shadow: 0 0 5px #fff,
   .user-card {
     max-width: 500px;
   }
-}
-.user-card h3,
-.user-card p {
- font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
- font-size: large;
+
+  .user-h1 {
+    font-size: 3.5rem;
+    max-width: 700px;
+  }
 }
 
 /* 📱 Tablet */
@@ -184,7 +188,11 @@ text-shadow: 0 0 5px #fff,
   }
 
   .user-card {
-    max-width: 200px;
+    max-width: 14rem;
+  }
+
+  .user-h1 {
+    font-size: 2.5rem;
   }
 }
 
@@ -198,7 +206,6 @@ text-shadow: 0 0 5px #fff,
 
   .user-card {
     max-width: 100%;
-    width: 100%;
   }
 
   .user-card h3 {
@@ -209,8 +216,24 @@ text-shadow: 0 0 5px #fff,
     font-size: 0.95rem;
   }
 
+  .user-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   .user-actions button {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     padding: 0.4rem 0.6rem;
+    width: 100%;
+  }
+
+  .user-form {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .user-h1 {
+    font-size: 2rem;
+    max-width: 100%;
   }
 }

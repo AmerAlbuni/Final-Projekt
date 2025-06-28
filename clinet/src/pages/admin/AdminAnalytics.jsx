@@ -30,7 +30,7 @@ const AdminAnalytics = () => {
   return (
     <div className="admin-analytics-wrapper">
       <div className="admin-analytics-container">
-        <h1>📊 Admin Analytics</h1>
+        <h1 className='analytics-h1'> Admin Analytics</h1>
 
         {loading ? (
           <p className="loading-msg">Loading analytics...</p>
@@ -40,22 +40,22 @@ const AdminAnalytics = () => {
           <>
             <div className="analytics-grid">
               <div className="analytics-card">
-                <h2>👥 Total Users</h2>
+                <h2> Total Users</h2>
                 <p>{data.totalUsers}</p>
               </div>
 
               <div className="analytics-card">
-                <h2>📁 Total Projects</h2>
+                <h2> Total Projects</h2>
                 <p>{data.totalProjects}</p>
               </div>
 
               <div className="analytics-card">
-                <h2>✅ Total Tasks</h2>
+                <h2> Total Tasks</h2>
                 <p>{data.totalTasks}</p>
               </div>
 
               <div className="analytics-card">
-                <h2>🏁 Completed Tasks</h2>
+                <h2> Completed Tasks</h2>
                 <p>{data.completedTasks}</p>
               </div>
             </div>
@@ -63,7 +63,7 @@ const AdminAnalytics = () => {
             {/* ✅ Task completion ratio */}
             {data.totalTasks > 0 && (
               <div className="analytics-completion">
-                📈 <span>{Math.round((data.completedTasks / data.totalTasks) * 100)}%</span> Tasks Completed
+                 <span>{Math.round((data.completedTasks / data.totalTasks) * 100)}%</span> Tasks Completed
               </div>
             )}
           </>

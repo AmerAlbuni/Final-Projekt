@@ -110,7 +110,7 @@ const AdminProjects = () => {
   return (
     <div className="admin-projects-wrapper">
       <div className="admin-projects-container">
-        <h1> Manage Projects</h1>
+        <h1 className='project-h1'> Manage Projects</h1>
 
         <form className='create-form' onSubmit={handleCreate}>
           <h2>Create New Project</h2>

@@ -138,10 +138,10 @@ const AdminTeams = () => {
   return (
     <div className="admin-teams-wrapper">
       <div className="admin-teams-container">
-        <h1>🛠 Manage Teams</h1>
+        <h1 className='team-h1'> Manage Teams</h1>
 
         <form onSubmit={handleCreateTeam} className="admin-teams-form">
-          <h2>Create New Team</h2>
+          <h2 className='team-h2'>Create New Team</h2>
           {message && <p className="success-msg">{message}</p>}
           {error && <p className="error-msg">{error}</p>}
 
@@ -154,9 +154,9 @@ const AdminTeams = () => {
             </select>
           </div>
 
-          <input name="name" value={form.name} onChange={handleChange} required placeholder="Team Name" />
+          <input className='input' name="name" value={form.name} onChange={handleChange} required placeholder="Team Name" />
 
-          <select multiple value={form.members} onChange={handleMemberSelect}>
+          <select className='member' multiple value={form.members} onChange={handleMemberSelect}>
             {users
               .filter((u) => u.role === 'Member' && u._id !== form.teamLead)
               .map((u) => (
@@ -166,7 +166,7 @@ const AdminTeams = () => {
               ))}
           </select>
 
-          <button type="submit">➕ Create Team</button>
+          <button type="submit"> Create Team</button>
         </form>
 
         {loading ? (

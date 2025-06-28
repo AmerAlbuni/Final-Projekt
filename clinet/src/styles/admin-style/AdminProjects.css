@@ -32,6 +32,20 @@
   border-radius: 1rem;
   width: 88%;
 }
+.project-h1{
+  font-size: 3.5rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+margin: 2rem auto;
+width: 30rem;
+text-shadow: 0 0 5px #fff,
+    0 0 10px #cc4500,
+    0 0 20px #cc4500,
+    0 0 40px #cc4500; 
+}
 
 /* 🧱 Form Fields */
 .form-fields {
@@ -103,9 +117,6 @@ form button:hover {
    box-sizing: border-box;
   border-radius: 1rem;
   box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00 !important;
-  
- 
- 
 }
 
 
@@ -129,7 +140,8 @@ form button:hover {
 
 /* 🗑️ Delete Button */
 .project-card button {
-  background-color: #ef4444;
+  background-color: transparent;
+  box-shadow: #ff9900 0px 0px 20px, #ff5e00 0px 0px 20px;
   color: white;
   padding: 0.4rem 0.8rem;
   border: none;
@@ -141,7 +153,7 @@ form button:hover {
 }
 
 .project-card button:hover {
-  background-color: #dc2626;
+  background-color: #ff9900;
 }
 @media (min-width: 1200px) {
  

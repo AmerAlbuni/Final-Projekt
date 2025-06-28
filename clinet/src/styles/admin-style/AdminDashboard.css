@@ -27,7 +27,7 @@
 
 .card-border-wrapper:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 16px #ff9900, 0 0 32px #ff5e00;
+  box-shadow: 0 0 40px #ff9900, 0 0 32px #ff5e00;
 }
 
 /* Inner content */
