@@ -28,23 +28,23 @@ const MemberTeamPage = () => {
 
   const wrapperStyle = {
     minHeight: "100vh",
-    padding: "3rem 1rem",
-    background: "linear-gradient(135deg, #0f172a, #334155, #1e40af, #0ea5e9)",
-    backgroundSize: "400% 400%",
+    padding: "5rem 1rem",
+    backgroundColor: "transparent",
     animation: "gradientShift 15s ease infinite",
     display: "flex",
     justifyContent: "center",
     alignItems: "start",
+    fontFamily: "'Inter', sans-serif",
   };
 
   const containerStyle = {
-    background: "rgba(255, 255, 255, 0.75)",
+    background: "transparent",
+   boxShadow: "0 0 10px #ff9900, 0 0 25px #ff5e00",
     backdropFilter: "blur(12px)",
     borderRadius: "1.5rem",
     padding: "2rem",
     width: "100%",
     maxWidth: "800px",
-    boxShadow: "0 15px 30px rgba(0, 0, 0, 0.25)",
   };
 
   const membersGridStyle = {
@@ -54,10 +54,11 @@ const MemberTeamPage = () => {
   };
 
   const memberCardStyle = {
-    background: "white",
+    background: "transparent",
+   boxShadow: "0 0 10px #ff9900, 0 0 25px #ff5e00",
     borderRadius: "1rem",
     padding: "1rem 1.5rem",
-    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.1)",
+   
   };
 
   const memberNameStyle = {
@@ -81,7 +82,7 @@ const MemberTeamPage = () => {
     <div style={wrapperStyle}>
       <div style={containerStyle}>
         <h1 style={{ color: "#0f172a", marginBottom: "1rem" }}>
-          👥 My Team (Read-Only)
+         My Team (Read-Only)
         </h1>
 
         {error && <p style={{ color: "#dc2626", fontWeight: "bold" }}>{error}</p>}
@@ -101,14 +102,6 @@ const MemberTeamPage = () => {
           </div>
         )}
       </div>
-
-      <style>{`
-        @keyframes gradientShift {
-          0% {background-position: 0% 50%;}
-          50% {background-position: 100% 50%;}
-          100% {background-position: 0% 50%;}
-        }
-      `}</style>
     </div>
   );
 };
