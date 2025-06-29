@@ -1,14 +1,13 @@
 // controllers/userController.js
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import { sendEmail } from '../utils/email.js'; // ✅ ADDED
 
 const validRoles = ['Admin', 'TeamLead', 'Member'];
 
 // ✅ CREATE user (Admin only)
 export const createUser = async (req, res) => {
   let { name, email, password, role } = req.body;
-
-  // role = role?.trim();
 
   if (!name || !email || !password || !role) {
     return res.status(400).json({ message: 'All fields are required' });
@@ -45,6 +44,13 @@ export const createUser = async (req, res) => {
       email,
       password: hashedPassword,
       role,
+    });
+
+    // ✅ Send registration email
+    await sendEmail({
+      to: user.email,
+      subject: '🎉 You have been registered',
+      text: `Hello ${user.name},\n\nYou have been successfully registered as a ${user.role}.\n\nWelcome to the platform!`,
     });
 
     res.status(201).json({

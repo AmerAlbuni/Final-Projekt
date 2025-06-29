@@ -28,11 +28,10 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  padding: 5rem 5rem 5rem 5rem;
-  background-color:transparent;
+  padding: 5rem;
+  background-color: transparent;
   border-radius: 25px;
-  width: 100%;
-
+  width: 110%;
   box-sizing: border-box;
 }
 
@@ -45,15 +44,16 @@
 }
 
 .field {
+  position: relative; /* For eye icon positioning */
   display: flex;
   align-items: center;
   gap: 1em;
   border-radius: 25px;
-  width: 100%;
   margin-bottom: 0.75rem;
   background-color: #2f2f2f;
   box-shadow: inset 1px 3px 6px #111;
   color: white;
+ padding: 1em 1.5rem;
 }
 
 .input-icon {
@@ -70,7 +70,8 @@
   width: 100%;
   color: #d3d3d3;
   font-size: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 0.75em 0;
+  border-radius: 25px;
 }
 
 .form .btn {
@@ -93,11 +94,41 @@
 
 .button1:hover {
   background-color: #000;
-  
   box-shadow: 0 0 30px #ebc190a8;
 }
 
+.btn2 {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  text-align: left;
+  font-size: 1rem;
+  margin-top: 1em;
+}
 
+.btn2:hover {
+  color: #ff8800;
+  text-decoration: underline;
+  transition: color 0.3s ease-in-out;
+}
+
+/* 👁 Eye icon inside the password field */
+/* .password-eye-icon {
+  position: absolute;
+  left: 20rem;
+  top: 8;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+} */
+
+
+/* Responsive adjustments */
 @media (max-width: 500px) {
   .form {
     padding: 1.5em;
@@ -106,21 +137,17 @@
   #heading {
     font-size: 1.4em;
   }
+}
+@media (max-width: 400px) {
+  .form {
+    padding: 1em;
+  }
 
- 
-}
-.btn2{
-  background-color: transparent;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
- width: 50%;
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 1em;
-}
-.btn2:hover {
-  color: #ff8800;
-  text-decoration: underline;
-  transition: color 0.3s ease-in-out;
+  #heading {
+    font-size: 1.2em;
+  }
+
+  .button1 {
+    padding: 1.2rem 6rem;
+  }
 }
