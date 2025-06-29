@@ -1,8 +1,8 @@
-// AdminUsers.jsx
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import Select from 'react-select';
+import PasswordInput from '../../components/PasswordInput.jsx';
 import "../../styles/admin-style/AdminUsers.css";
 
 const AdminUsers = () => {
@@ -129,9 +129,31 @@ const AdminUsers = () => {
             {message && <p>{message}</p>}
             {error && <p>{error}</p>}
 
-            <input className='input' name="name" value={form.name} onChange={handleChange} required placeholder="Name" />
-            <input className='input' name="email" value={form.email} onChange={handleChange} required type="email" placeholder="Email" />
-            <input className='input' name="password" value={form.password} onChange={handleChange} required type="password" placeholder="Password" />
+            <input
+              className='admin-input'
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              required
+              placeholder="Name"
+            />
+
+            <input
+              className='admin-input'
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              type="email"
+              placeholder="Email"
+            />
+
+            <PasswordInput
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
 
             <Select
               classNamePrefix="react-select"

@@ -87,15 +87,16 @@
 }
 
 /* 🔡 Input Styling */
-.input {
+.admin-input {
   background-color: transparent;
   width: 100%;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom:2rem;
   border-radius: 0.5rem;
   border: 1px solid #ff9900;
   color: white;
   font-size: 1rem;
+  box-shadow: 0 0 8px #ff5e00, 0 0 16px #ff9900;
 }
 
 .input::placeholder {
@@ -264,3 +265,4 @@ h1, h2 {
     max-width: 100%;
   }
 }
+
