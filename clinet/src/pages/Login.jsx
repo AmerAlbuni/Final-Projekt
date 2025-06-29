@@ -95,6 +95,14 @@ const Login = () => {
             />
           </div>
 
+
+           <div>
+            <button className="btn2">
+              Forgot Password ?
+            </button>
+          </div>
+
+
           <div className="btn">
             <button type="submit" className="button1">
               {t('login.button')}

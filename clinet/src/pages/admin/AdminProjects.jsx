@@ -155,7 +155,7 @@ const AdminProjects = () => {
             />
           </div>
 
-          <button type="submit" disabled={creating}>
+          <button className='form-butten' type="submit" disabled={creating}>
             {creating ? 'Creating...' : 'Create'}
           </button>
         </form>

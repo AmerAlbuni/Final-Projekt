@@ -73,7 +73,7 @@ form select {
 }
 
 /* 🟪 Submit Button */
-form button {
+.form-butten {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
   background-color: transparent;
@@ -87,20 +87,12 @@ form button {
   width: fit-content;
 }
 
-form button:hover {
+.form-butten:hover {
   background-color: #ff5e00;
   box-shadow: 0 0 25px #ff9900, 0 0 45px #ff5e00;
 }
 
-/* 🔲 Project Grid */
-/* .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-  width: 100%;
- 
-} */
+
 
 /* ✨ Glowing Project Card */
 .project-card {

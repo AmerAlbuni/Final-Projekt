@@ -13,7 +13,8 @@
 .language-test {
   cursor: pointer;
   border-radius: 22px;
-  background-color: #6b6969;
+  background-color: #cf90319a;
+  color: blanchedalmond;
 }
 .language::before {
   content: "";
@@ -23,7 +24,7 @@
   right: -2px;
   bottom: -2px;
   z-index: -1;
-  background: linear-gradient(120deg, #90c2eba8, #070a0e);
+  background: linear-gradient(120deg, #3d25029a);
   background-size: 300% 300%;
   border-radius: 25px;
   animation: moveNeon 5s linear infinite;

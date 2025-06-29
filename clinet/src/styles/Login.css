@@ -93,22 +93,10 @@
 
 .button1:hover {
   background-color: #000;
-  padding: 1.4rem 9.5rem;
+  
   box-shadow: 0 0 30px #ebc190a8;
 }
 
-.login-error {
-  background-color: #fee2e2;
-  color: #b91c1c;
-  border: 1px solid #fca5a5;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 1rem;
-  text-align: center;
-}
 
 @media (max-width: 500px) {
   .form {
@@ -119,10 +107,20 @@
     font-size: 1.4em;
   }
 
-  .button1,
-  .button2,
-  .button3 {
-    font-size: 0.95rem;
-    padding: 0.5em 1.2em;
-  }
+ 
+}
+.btn2{
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+ width: 50%;
+  text-align: left;
+  font-size: 1rem;
+  margin-top: 1em;
+}
+.btn2:hover {
+  color: #ff8800;
+  text-decoration: underline;
+  transition: color 0.3s ease-in-out;
 }
