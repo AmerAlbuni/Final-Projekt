@@ -1,0 +1,65 @@
+.team-wrapper {
+  min-height: 100vh;
+  padding: 5rem 1rem;
+  background-color: transparent;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  font-family: 'Inter', sans-serif;
+}
+
+.team-container {
+  background: transparent;
+  box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00;
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.team-heading {
+  color: #e9e9e9;
+  margin-bottom: 3rem;
+}
+
+.team-error {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.team-loading,
+.team-empty {
+  color: #334155;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.member-card {
+  background: transparent;
+  box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+}
+
+.member-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fafcff;
+  margin-bottom: 0.25rem;
+}
+
+.member-email {
+  color: #e7eaee;
+  margin-bottom: 0.5rem;
+}
+
+.member-role {
+  font-weight: 500;
+  color: #d7ddeb;
+}
