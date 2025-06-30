@@ -8,30 +8,31 @@
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: white;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
 }
 
 .user-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 14px #ff9900, 0 0 32px #ff5e00;
+  box-shadow: 0 0 34px #ff9900, 0 0 72px #ff5e00;
+  outline: 5px solid #ff9900;
 }
+
 
 /* 🧱 Card Content */
 .user-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   color: #fff;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .user-card p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
   color: #ddd;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 /* ✨ Action Buttons */
@@ -59,13 +60,20 @@
 }
 
 .add-button {
-  background-color: transparent;
-  margin-bottom: 1rem;
+background-color: transparent;
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .add-button:hover {
   background-color: #ff9900;
-  transform: translateY(-2px);
+  transform: translateY(-6px);
   box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
 }
 
@@ -91,7 +99,7 @@
   background-color: transparent;
   width: 100%;
   padding: 0.75rem 1rem;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
   border-radius: 0.5rem;
   border: 1px solid #ff9900;
   color: white;
@@ -158,7 +166,8 @@
 }
 
 /* 🔠 Typography Overrides */
-h1, h2 {
+h1,
+h2 {
   color: white;
   margin-bottom: 2rem;
   text-align: center;
@@ -167,10 +176,8 @@ h1, h2 {
 .user-h1 {
   font-size: 3rem;
   margin: 2rem auto;
-  text-shadow: 0 0 5px #fff,
-               0 0 10px #cc4500,
-               0 0 20px #cc4500,
-               0 0 40px #cc4500;
+  text-shadow: 0 0 5px #fff, 0 0 10px #cc4500, 0 0 20px #cc4500,
+    0 0 40px #cc4500;
   width: 100%;
   max-width: 90%;
   display: flex;
@@ -265,4 +272,3 @@ h1, h2 {
     max-width: 100%;
   }
 }
-
