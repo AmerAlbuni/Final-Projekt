@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // ✅ Added Link
 import '../styles/Login.css';
 
 const Login = () => {
@@ -109,11 +109,11 @@ const Login = () => {
             />
           </div>
 
-          {/* Forgot Password */}
+          {/* ✅ Forgot Password Link */}
           <div>
-            <button type="button" className="btn2">
-              Forgot Password ?
-            </button>
+            <Link to="/forgot-password" className="btn2">
+              Forgot Password?
+            </Link>
           </div>
 
           {/* Submit */}
