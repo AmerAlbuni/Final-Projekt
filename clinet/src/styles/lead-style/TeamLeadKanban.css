@@ -2,28 +2,19 @@
 .kanban-wrapper {
   min-height: 100vh;
   padding: 2rem 1rem;
-  background: linear-gradient(135deg, #4f46e5, #9333ea, #ec4899);
-  background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 .kanban-container {
-  background: rgba(255, 255, 255, 0.75);
+  background-color: transparent;
+  box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
   backdrop-filter: blur(15px);
   border-radius: 1.5rem;
   padding: 2rem;
   width: 100%;
   max-width: 1100px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Header */
@@ -36,11 +27,11 @@
 
 .kanban-header h2 {
   font-size: 1.8rem;
-  color: #1e293b;
+  color: #fdfdfd;
 }
 
 .btn-primary {
-  background-color: #6366f1;
+  background-color: #ac712e;
   color: white;
   padding: 0.6rem 1.2rem;
   border: none;
@@ -51,7 +42,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #4f46e5;
+  background-color: #f5ae43;
 }
 
 /* Project selector */

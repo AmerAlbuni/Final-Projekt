@@ -106,7 +106,7 @@ const TeamLeadKanban = () => {
     <div className="kanban-wrapper">
       <div className="kanban-container">
         <div className="kanban-header">
-          <h2>🧠 Project Tasks (Kanban)</h2>
+          <h2>Project Tasks (Kanban)</h2>
           <button onClick={openModal} className="btn-primary">+ New Task</button>
         </div>
 

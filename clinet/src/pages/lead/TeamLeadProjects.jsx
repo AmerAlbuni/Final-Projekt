@@ -32,9 +32,8 @@ const TeamLeadProjects = () => {
   return (
     <div className="teamlead-projects-wrapper">
       <div className="teamlead-projects-container">
-        <div className="header">
-          <h1>📁 Your Projects</h1>
-         
+        <div className="t-header">
+          <h1>Your Projects</h1>
         </div>
 
         {loading ? (
