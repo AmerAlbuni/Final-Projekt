@@ -1,0 +1,51 @@
+.analytics-wrapper {
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  animation: gradientShift 15s ease infinite;
+  font-family: 'Inter', sans-serif;
+}
+
+.analytics-container {
+  background: transparent;
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 900px;
+ box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
+  color: #1e293b;
+}
+
+.analytics-error {
+  color: red;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.analytics-card {
+ background-color: transparent;
+ box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.analytics-heading {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.analytics-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #eab033;
+}
