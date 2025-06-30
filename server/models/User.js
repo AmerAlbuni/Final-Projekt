@@ -23,8 +23,10 @@ const userSchema = new mongoose.Schema(
     },
     team: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Team', // We'll create the Team model later
+      ref: 'Team',
     },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
   },
   {
     timestamps: true,
