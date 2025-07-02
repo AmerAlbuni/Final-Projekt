@@ -1,0 +1,16 @@
+.send{
+  padding: 0.5rem 1rem;
+  background-color: #7e4d04;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send:hover {
+  background-color: #ff9900;
+
+    font-size: 1rem;
+
+}

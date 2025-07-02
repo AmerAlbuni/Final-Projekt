@@ -1,11 +1,8 @@
 .lead-dashboard-wrapper {
-  min-height: 100vh;
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
   display: flex;
   justify-content: center;
   align-items: start;
-  padding: 4rem 1rem;
+  margin: 3rem
 }
 h1,
 h2,
@@ -13,12 +10,11 @@ p {
   color: white;
 }
 .lead-dashboard-container {
-  backdrop-filter: blur(12px);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
+  border-radius: 2rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 960px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
 }
 
 .lead-dashboard-header {
@@ -39,25 +35,26 @@ p {
 }
 
 .lead-nav-card {
-  background: #ff9900;
+  background: #ff990000;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
+
   cursor: pointer;
 }
 
 .lead-nav-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  background-color: #ff9900;
 }
 
 .lead-nav-card h2 {
   font-size: 1.25rem;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .lead-nav-card p {
-  color: #475569;
+  color: #ffffff;
 }

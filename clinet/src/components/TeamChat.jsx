@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import socket from "../socket";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import "../styles/TeamChat.css"; // Assuming you have some styles for the chat
 
 const TeamChat = () => {
   const { token, user } = useAuth();
@@ -131,7 +132,7 @@ const TeamChat = () => {
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           style={{ flexGrow: 1, padding: "0.5rem" }}
         />
-        <button onClick={sendMessage} style={{ padding: "0.5rem 1rem", background: "#ff9900", color: "#fff", border: "none", borderRadius: "0.25rem" }}>
+        <button className="send" onClick={sendMessage} >
           Send
         </button>
       </div>
