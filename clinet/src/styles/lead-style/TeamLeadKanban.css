@@ -208,3 +208,87 @@
   padding: 1rem;
   display: block;
 }
+
+/* 🔧 React Select Main Control */
+.react-select__control {
+  min-height: 45px;
+  width: 88%;
+  max-width: 600px;
+  background-color: transparent;
+  border: 1px solid #ff9900;
+  box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* 🔧 React Select Container */
+.react-select__value-container {
+  display: flex;
+  background-color: transparent;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  gap: 0.4rem;
+  min-height: 3rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ✅ Fix shrinking input */
+.react-select__input {
+  color: #ffffff !important;
+  flex-grow: 1 !important;
+  flex-shrink: 0 !important;
+  min-width: 60px !important;
+  width: auto !important;
+}
+
+/* Placeholder */
+.react-select__placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Multi-value selected option */
+.react-select__multi-value {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid #ff9900;
+  box-shadow: 0 0 16px #ff9900, 0 0 25px #ff5e00;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.react-select__multi-value__label {
+  color: rgb(255, 255, 255) !important;
+}
+
+.react-select__multi-value__remove {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.react-select__menu {
+  background-color: #362100 !important;
+  color: white;
+  border: 1px solid #ff9900;
+  box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00;
+  border-radius: 0.5rem;
+  z-index: 9999;
+}
+
+/* 🔁 Responsive Adjustments */
+@media (max-width: 1024px) {
+  .admin-teams-container {
+    padding: 1.5rem;
+  }
+
+  .input,
+  .react-select__control {
+    max-width: 100% !important;
+  }
+}

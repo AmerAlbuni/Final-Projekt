@@ -6,6 +6,7 @@ import CommentModal from '../../components/CommentModal';
 import { useAuth } from '../../context/AuthContext';
 import socket from '../../socket';
 import '../../styles/lead-style/TeamLeadKanban.css';
+import Select from 'react-select';
 
 const TeamLeadKanban = () => {
   const { token } = useAuth();
@@ -112,8 +113,9 @@ const TeamLeadKanban = () => {
 
         {projectError && <p className="error-msg">{projectError}</p>}
 
-        <select
-          className="project-select"
+        <Select
+          className="react-select"
+          classNamePrefix="react-select"
           value={projectId}
           onChange={e => setProjectId(e.target.value)}
         >
@@ -121,7 +123,7 @@ const TeamLeadKanban = () => {
           {projects.map(project => (
             <option key={project._id} value={project._id}>{project.title}</option>
           ))}
-        </select>
+        </Select>
 
         {loading ? (
           <p>Loading tasks...</p>

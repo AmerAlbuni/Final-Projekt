@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { useAuth } from "../../context/AuthContext";
 import '../../styles/lead-style/TeamLeadTeamMembers.css';
+import Select from 'react-select';
 
 const TeamLeadTeamMembers = () => {
   const { token } = useAuth();
@@ -92,14 +93,16 @@ const TeamLeadTeamMembers = () => {
             required
           />
 
-          <select
-            className="team-input"
+          <Select
+            className="react-select"
+            classNamePrefix="react-select"
             value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            <option value="Member">Member</option>
-            <option value="TeamLead">Team Lead</option>
-          </select>
+            onChange={(e) => setRole(e.value)}
+            options={[
+              { value: "Member", label: "Member" },
+              { value: "TeamLead", label: "Team Lead" },
+            ]}
+          />
 
           <button
             type="submit"
