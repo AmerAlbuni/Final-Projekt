@@ -1,5 +1,6 @@
 import Team from '../models/Team.js';
 import User from '../models/User.js';
+import Notification from '../models/Notification.js'; // ✅ added
 
 // ✅ Create a team
 export const createTeam = async (req, res) => {
@@ -94,16 +95,19 @@ export const deleteTeam = async (req, res) => {
   }
 };
 
-// ✅ Get the logged-in user's team
+// ✅ Get the logged-in user's team (with members and teamLead)
 export const getMyTeam = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate({
       path: 'team',
-      populate: { path: 'members', select: 'name email role' },
+      populate: [
+        { path: 'members', select: 'name email role' },
+        { path: 'teamLead', select: 'name email role' },
+      ],
     });
 
     if (!user || !user.team) {
-      return res.status(204).json(null); // ✅ No team assigned, return 204
+      return res.status(204).json(null);
     }
 
     res.json(user.team);
@@ -135,9 +139,28 @@ export const inviteToTeam = async (req, res) => {
       return res.status(400).json({ message: 'User is already in your team.' });
     }
 
+    // Update user team and role
     user.team = req.user.team;
     user.role = role;
     await user.save();
+
+    // Add user to the team members array if not already present
+    await Team.findByIdAndUpdate(req.user.team, {
+      $addToSet: { members: user._id },
+    });
+
+    // Create notification
+    const notification = new Notification({
+      user: user._id,
+      message: `You have been added to a team as ${role}.`,
+      link: '/member/team',
+    });
+    await notification.save();
+
+    // Emit real-time notification if Socket.io available
+    if (req.io) {
+      req.io.to(user._id.toString()).emit('newNotification', notification);
+    }
 
     res.json({ message: `${user.name} has been added to your team as ${role}.` });
   } catch (err) {
@@ -157,7 +180,7 @@ export const removeTeamMember = async (req, res) => {
       return res.status(404).json({ message: 'Team not found' });
     }
 
-    // Only allow if user is Admin OR the Team Lead of this team
+    // Only allow if user is Admin OR Team Lead of the team
     if (
       user.role !== 'Admin' &&
       (!team.teamLead || team.teamLead.toString() !== user._id.toString())
@@ -170,7 +193,7 @@ export const removeTeamMember = async (req, res) => {
     );
     await team.save();
 
-    // Optional: also remove the team from the user
+    // Remove team reference from user
     await User.findByIdAndUpdate(memberId, { $unset: { team: '' } });
 
     res.status(200).json({ message: 'Member removed from team' });

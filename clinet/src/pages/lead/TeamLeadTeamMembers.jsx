@@ -25,8 +25,8 @@ const TeamLeadTeamMembers = () => {
         setMembers(res.data.members || []);
         setTeamId(res.data._id);
       } catch (err) {
-        console.error('Failed to fetch team members:', err);
-        setMembers([]); // fallback if no team
+        console.error('❌ Failed to fetch team members:', err);
+        setMembers([]);
         setError("You are not assigned to a team.");
       } finally {
         setLoading(false);
@@ -43,9 +43,13 @@ const TeamLeadTeamMembers = () => {
     setMessage("");
 
     try {
+      console.log("📤 Sending invite request:", { email, role });
+
       const res = await api.post("/teams/invite", { email, role }, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      console.log("✅ Invite response:", res.data);
       setMessage(res.data.message);
       setEmail("");
       setRole("Member");
@@ -55,7 +59,7 @@ const TeamLeadTeamMembers = () => {
       });
       setMembers(updated.data.members || []);
     } catch (err) {
-      console.error("Invite error:", err);
+      console.error("❌ Invite error:", err?.response?.data || err.message);
       setError(err?.response?.data?.message || "Failed to invite user to team.");
     } finally {
       setInviting(false);
@@ -73,7 +77,7 @@ const TeamLeadTeamMembers = () => {
       });
       setMembers(res.data.members || []);
     } catch (err) {
-      console.error("Failed to remove member:", err);
+      console.error("❌ Failed to remove member:", err);
       setError("Could not remove team member.");
     }
   };
@@ -96,7 +100,7 @@ const TeamLeadTeamMembers = () => {
           <Select
             className="react-select"
             classNamePrefix="react-select"
-            value={role}
+            value={{ value: role, label: role }}
             onChange={(e) => setRole(e.value)}
             options={[
               { value: "Member", label: "Member" },
