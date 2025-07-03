@@ -7,34 +7,16 @@
   color: #eee;
 }
 
-/* .nav-links {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 1.25rem;
-  text-decoration: none;
-}
-.nav-links a {
-  color: #2c3e50;
-  text-decoration: none;
-  transition: color 0.3s;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid transparent;
-
-  &:hover {
-    color: #2c3e50;
-    border-bottom: 2px solid #2c3e50;
-    font-size: 1.5rem;
-  }
-} */
+/* User name */
 .user-name {
   font-weight: bold;
   font-size: 1.25rem;
   color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
-  padding: 0.5rem ;
+  padding: 0.5rem;
 }
 
+/* Header actions */
 .header-actions {
   display: flex;
   align-items: center;
@@ -42,14 +24,26 @@
   position: relative;
 }
 
+/* Notification bell button */
 .notification-button {
   position: relative;
-  background: transparent !important;
-  box-shadow: 0 6px 20px #ff9900, 0 0 25px #ff5e00;
-  font-size: 1.25rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
   cursor: pointer;
+  color: #ff9900;
+ 
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+  
 }
 
+.notification-button:hover {
+  box-shadow: 0 0 22px #ff9900,0 0 20px #ff5e00   !important ;
+}
+
+/* Red badge for unread count */
 .notification-badge {
   position: absolute;
   top: -8px;
@@ -61,31 +55,52 @@
   font-size: 12px;
 }
 
+/* Dropdown box */
 .notification-dropdown {
   position: absolute;
-  top: 2rem;
+  top: 2.5rem;
   right: 0;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  width: 300px;
+  width: 19rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 153, 0, 0.3);
+  box-shadow: 0 0 12px #ff9900, 0 0 30px #ff5e00;
+  border-radius: 1rem;
+  padding: 0.5rem 0;
   z-index: 1000;
+  color: #fff;
+  overflow: hidden;
 }
 
+/* Message text inside dropdown */
 .notification-dropdown p {
   padding: 1rem;
+  text-align: center;
+  color: #ddd;
+  font-style: italic;
 }
 
+/* Individual notification item */
 .notification-item {
-  padding: 0.75rem;
-  border-bottom: 1px solid #eee;
+  padding: 1rem;
   cursor: pointer;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Unread */
 .notification-item.unread {
-  background: #e6f7ff;
+  background: rgba(255, 153, 0, 0.2);
+  font-weight: bold;
 }
 
+/* Read */
 .notification-item.read {
-  background: #f9f9f9;
+  background: transparent;
+  opacity: 0.6;
+}
+
+/* Hover effect */
+.notification-item:hover {
+  background: rgba(255, 153, 0, 0.35);
 }
