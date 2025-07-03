@@ -27,11 +27,17 @@ export const getAnalytics = async (req, res) => {
 // ✅ Team Lead: Get Team-specific Analytics
 export const getTeamLeadAnalytics = async (req, res) => {
   try {
-    const user = req.user;
+    const user = await User.findById(req.user._id);
     const teamId = user.team?._id || user.team;
 
     if (!teamId) {
-      return res.status(400).json({ message: 'User is not assigned to any team' });
+      return res.status(200).json({
+        message: 'No team assigned.',
+        totalProjects: 0,
+        completedTasks: 0,
+        pendingTasks: 0,
+        overdueTasks: 0,
+      });
     }
 
     const [totalProjects, completedTasks, pendingTasks, overdueTasks] = await Promise.all([

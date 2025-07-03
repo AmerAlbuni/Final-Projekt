@@ -32,8 +32,10 @@ export const sendMessage = async (req, res) => {
 export const getTeamMessages = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
+
     if (!user.team) {
-      return res.status(400).json({ message: 'You are not assigned to a team.' });
+      console.warn(`⚠️ User ${user.email} is not assigned to a team.`);
+      return res.status(200).json([]); // Return empty list instead of 400
     }
 
     const messages = await Message.find({ team: user.team })

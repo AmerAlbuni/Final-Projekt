@@ -97,26 +97,21 @@ export const deleteTeam = async (req, res) => {
 // ✅ Get the logged-in user's team
 export const getMyTeam = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id).populate({
+      path: 'team',
+      populate: { path: 'members', select: 'name email role' },
+    });
+
     if (!user || !user.team) {
-      return res.status(404).json({ message: 'You are not assigned to a team yet.' });
+      return res.status(204).json(null); // ✅ No team assigned, return 204
     }
 
-    const team = await Team.findById(user.team)
-      .populate('teamLead', 'name email role')
-      .populate('members', 'name email role');
-
-    if (!team) {
-      return res.status(404).json({ message: 'Team not found' });
-    }
-
-    res.json(team);
+    res.json(user.team);
   } catch (err) {
     console.error('❌ Failed to fetch team:', err.message);
     res.status(500).json({ message: 'Server error fetching team' });
   }
 };
-
 
 // ✅ Invite an existing user (by email) to your team
 export const inviteToTeam = async (req, res) => {
@@ -151,7 +146,7 @@ export const inviteToTeam = async (req, res) => {
   }
 };
 
-// controllers/teamController.js
+// ✅ Remove a member from team
 export const removeTeamMember = async (req, res) => {
   const { teamId, memberId } = req.params;
   const user = req.user;
@@ -170,14 +165,13 @@ export const removeTeamMember = async (req, res) => {
       return res.status(403).json({ message: 'Not authorized to remove members from this team' });
     }
 
-    // Remove the member from the team
     team.members = team.members.filter(
       (member) => member.toString() !== memberId
     );
     await team.save();
 
-    // Optionally: delete the user entirely (only if you want)
-    // await User.findByIdAndDelete(memberId);
+    // Optional: also remove the team from the user
+    await User.findByIdAndUpdate(memberId, { $unset: { team: '' } });
 
     res.status(200).json({ message: 'Member removed from team' });
   } catch (err) {
@@ -185,4 +179,3 @@ export const removeTeamMember = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-

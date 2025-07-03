@@ -21,10 +21,12 @@ const TeamLeadTeamMembers = () => {
         const res = await api.get('/teams/my-team', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setMembers(res.data.members);
+        setMembers(res.data.members || []);
         setTeamId(res.data._id);
       } catch (err) {
         console.error('Failed to fetch team members:', err);
+        setMembers([]); // fallback if no team
+        setError("You are not assigned to a team.");
       } finally {
         setLoading(false);
       }
@@ -50,7 +52,7 @@ const TeamLeadTeamMembers = () => {
       const updated = await api.get("/teams/my-team", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setMembers(updated.data.members);
+      setMembers(updated.data.members || []);
     } catch (err) {
       console.error("Invite error:", err);
       setError(err?.response?.data?.message || "Failed to invite user to team.");
@@ -68,7 +70,7 @@ const TeamLeadTeamMembers = () => {
       const res = await api.get('/teams/my-team', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setMembers(res.data.members);
+      setMembers(res.data.members || []);
     } catch (err) {
       console.error("Failed to remove member:", err);
       setError("Could not remove team member.");
@@ -78,7 +80,7 @@ const TeamLeadTeamMembers = () => {
   return (
     <div className="team-wrapper">
       <div className="team-container">
-        <h1 className="team-title"> Team Members</h1>
+        <h1 className="team-title">Team Members</h1>
 
         <form onSubmit={handleInvite} className="team-form">
           <input
@@ -113,7 +115,7 @@ const TeamLeadTeamMembers = () => {
 
         {loading ? (
           <p className="team-loading">Loading members...</p>
-        ) : members.length === 0 ? (
+        ) : !Array.isArray(members) || members.length === 0 ? (
           <p className="team-loading">No members in your team yet.</p>
         ) : (
           <div className="members-grid">

@@ -1,8 +1,5 @@
 import Project from '../models/Project.js';
 
-// @desc    Create a project
-// @route   POST /api/projects
-// @access  Admin only
 export const createProject = async (req, res) => {
   try {
     const { title, description, deadline, teamId } = req.body;
@@ -24,7 +21,6 @@ export const createProject = async (req, res) => {
     res.status(500).json({ message: 'Failed to create project' });
   }
 };
-
 
 export const getProjects = async (req, res) => {
   try {
@@ -60,7 +56,6 @@ export const getProjects = async (req, res) => {
   }
 };
 
-
 export const deleteProject = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
@@ -79,13 +74,15 @@ export const deleteProject = async (req, res) => {
     res.status(500).json({ message: 'Failed to delete project' });
   }
 };
+
 // ✅ Get projects assigned to the user's team
 export const getProjectsByTeam = async (req, res) => {
   try {
     const user = req.user;
 
     if (!user.team) {
-      return res.status(400).json({ message: 'You are not assigned to a team.' });
+      console.warn(`⚠️ TeamLead ${user.email} is not assigned to a team`);
+      return res.status(200).json([]); // return empty array to avoid 400 error
     }
 
     const projects = await Project.find({ team: user.team }).populate('team');
