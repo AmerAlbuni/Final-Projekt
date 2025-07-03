@@ -7,8 +7,10 @@
   transition: all 0.3s ease;
   overflow: hidden;
   z-index: 1;
-
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .language-test {
   cursor: pointer;
@@ -29,4 +31,26 @@
   border-radius: 25px;
   animation: moveNeon 5s linear infinite;
   filter: blur(6px);
+}
+
+.language-select {
+  cursor: pointer;
+  border-radius: 22px;
+  background-color: #cf90319a;
+  color: blanchedalmond;
+}
+.globe-icon-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.globe-icon { 
+  width: 20px;
+  height: 20px;
+  color: #cf9031;
+}
+.language-text {
+  font-size: 14px;
+  color: #cf9031;
+  font-weight: bold;
 }

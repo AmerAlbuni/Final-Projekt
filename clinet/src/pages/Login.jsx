@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { useNavigate, Link } from 'react-router-dom'; // ✅ Added Link
 import '../styles/Login.css';
+import { Globe } from 'lucide-react'; // ✅ Importing Globe icon
 
 const Login = () => {
   const { i18n, t } = useTranslation();
@@ -46,8 +47,9 @@ const Login = () => {
   return (
     <div className="card">
       <div className="language">
+          <Globe className="globe-icon" />
         <select
-          className="language-test"
+          className="language-select"
           value={i18n.language}
           onChange={(e) => {
             const lang = e.target.value;
