@@ -50,17 +50,21 @@ const Login = () => {
           <Globe className="globe-icon" />
         <select
           className="language-select"
+         
           value={i18n.language}
           onChange={(e) => {
             const lang = e.target.value;
             i18n.changeLanguage(lang);
             localStorage.setItem("lang", lang);
           }}
+          
         >
+          
           <option value="en">🇺🇸 English</option>
           <option value="de">🇩🇪 Deutsch</option>
           <option value="ar">🇸🇦 العربية</option>
         </select>
+        
       </div>
 
       <div className="card2">

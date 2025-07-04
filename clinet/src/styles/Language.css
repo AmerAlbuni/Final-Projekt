@@ -11,6 +11,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: 2px solid #cf9031;
+  width: 140px;
 }
 .language-test {
   cursor: pointer;
@@ -38,6 +40,7 @@
   border-radius: 22px;
   background-color: #cf90319a;
   color: blanchedalmond;
+  margin-left: 1rem !important;
 }
 .globe-icon-container {
   display: flex;
