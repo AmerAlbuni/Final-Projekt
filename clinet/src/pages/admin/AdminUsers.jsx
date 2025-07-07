@@ -16,6 +16,8 @@ const AdminUsers = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   const fetchUsers = async () => {
     try {
@@ -81,16 +83,28 @@ const AdminUsers = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this user?')) return;
+  const openDeleteModal = (user) => {
+    setUserToDelete(user);
+    setShowDeleteModal(true);
+  };
+
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+    setUserToDelete(null);
+  };
+
+  const confirmDelete = async () => {
+    if (!userToDelete) return;
     try {
-      await api.delete(`/users/${id}`, {
+      await api.delete(`/users/${userToDelete._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUsers((prev) => prev.filter((u) => u._id !== id));
+      setUsers((prev) => prev.filter((u) => u._id !== userToDelete._id));
       setMessage('🗑️ User deleted successfully.');
     } catch (err) {
       setError(err.response?.data?.message || '❌ Failed to delete user');
+    } finally {
+      closeDeleteModal();
     }
   };
 
@@ -238,12 +252,25 @@ const AdminUsers = () => {
                   ) : (
                     <>
                       <button onClick={() => startEditing(user)}>✏️ Edit</button>
-                      <button onClick={() => handleDelete(user._id)}>🗑️ Delete</button>
+                      <button onClick={() => openDeleteModal(user)}>🗑️ Delete</button>
                     </>
                   )}
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {showDeleteModal && (
+          <div className="modal-backdrop">
+            <div className="modal">
+              <h3>Benutzer löschen</h3>
+              <p>Möchtest du den Benutzer <strong>{userToDelete?.name}</strong> wirklich löschen?</p>
+              <div className="modal-actions">
+                <button onClick={confirmDelete} className="delete-btn">Löschen</button>
+                <button onClick={closeDeleteModal}>Abbrechen</button>
+              </div>
+            </div>
           </div>
         )}
       </div>
