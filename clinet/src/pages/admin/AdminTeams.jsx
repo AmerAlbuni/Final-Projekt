@@ -14,6 +14,8 @@ const AdminTeams = () => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [teamToDelete, setTeamToDelete] = useState(null);
 
   useEffect(() => {
     if (token) {
@@ -102,9 +104,17 @@ const AdminTeams = () => {
     }
   };
 
-  const handleDeleteTeam = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this team?')) return;
+  const openDeleteModal = (team) => {
+    setTeamToDelete(team);
+    setShowDeleteModal(true);
+  };
 
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+    setTeamToDelete(null);
+  };
+
+  const handleDeleteTeam = async (id) => {
     try {
       await api.delete(`/teams/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -113,6 +123,8 @@ const AdminTeams = () => {
       setTeams((prev) => prev.filter((t) => t._id !== id));
     } catch (err) {
       setError(err.response?.data?.message || '❌ Failed to delete team');
+    } finally {
+      closeDeleteModal();
     }
   };
 
@@ -212,12 +224,32 @@ const AdminTeams = () => {
                     <p><strong>Members:</strong> {team.members.filter((m) => m._id !== team.teamLead?._id).map((m) => m.name).join(', ') || '—'}</p>
                     <div className="action-buttons">
                       <button onClick={() => startEditing(team)}>Edit</button>
-                      <button onClick={() => handleDeleteTeam(team._id)}>Delete</button>
+                      <button onClick={() => openDeleteModal(team)}>Delete</button>
                     </div>
                   </>
                 )}
               </div>
             ))}
+          </div>
+        )}
+        {/* Modal */}
+        {showDeleteModal && (
+          <div className="modal-backdrop">
+            <div className="modal">
+              <h3>Team löschen</h3>
+              <p>Möchtest du das Team <strong>{teamToDelete?.name}</strong> wirklich löschen?</p>
+              <div className="modal-actions">
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDeleteTeam(teamToDelete._id)}
+                >
+                  Löschen
+                </button>
+                <button className="cancel-btn" onClick={closeDeleteModal}>
+                  Abbrechen
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </div>

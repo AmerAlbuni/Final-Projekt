@@ -16,6 +16,8 @@ const AdminProjects = () => {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [projectToDelete, setProjectToDelete] = useState(null);
 
   const fetchProjects = async () => {
     try {
@@ -89,20 +91,30 @@ const AdminProjects = () => {
     }
   };
 
-  const handleDelete = async (projectId) => {
-    if (!window.confirm('Are you sure you want to delete this project?')) return;
+  const openDeleteModal = (project) => {
+    setProjectToDelete(project);
+    setShowDeleteModal(true);
+  };
 
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+    setProjectToDelete(null);
+  };
+
+  const confirmDelete = async () => {
+    if (!projectToDelete) return;
     setError('');
     setMessage('');
-
     try {
-      await api.delete(`/projects/${projectId}`, {
+      await api.delete(`/projects/${projectToDelete._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage('🗑️ Project deleted successfully.');
       fetchProjects();
     } catch (err) {
       setError(err.response?.data?.message || '❌ Failed to delete project');
+    } finally {
+      closeDeleteModal();
     }
   };
 
@@ -170,9 +182,23 @@ const AdminProjects = () => {
                 <p className="para">Description: {proj.description}</p>
                 <p className="para">Deadline: {proj.deadline?.substring(0, 10) || '—'}</p>
                 <p className="para">Team: {proj.team?.name || '—'}</p>
-                <button onClick={() => handleDelete(proj._id)}>🗑️ Delete</button>
+                <button onClick={() => openDeleteModal(proj)}>🗑️ Delete</button>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Modal */}
+        {showDeleteModal && (
+          <div className="modal-backdrop">
+            <div className="modal">
+              <h3>Projekt löschen</h3>
+              <p>Möchtest du das Projekt <strong>{projectToDelete?.title}</strong> wirklich löschen?</p>
+              <div className="modal-actions">
+                <button onClick={confirmDelete} className="delete-btn">Löschen</button>
+                <button onClick={closeDeleteModal} className="cancel-btn">Abbrechen</button>
+              </div>
+            </div>
           </div>
         )}
       </div>

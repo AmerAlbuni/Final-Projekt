@@ -1,0 +1,1 @@
+How can I use a modal to confirm delete user instead of an alert window?
