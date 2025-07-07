@@ -19,7 +19,6 @@
   outline: 5px solid #ff9900;
 }
 
-
 /* 🧱 Card Content */
 .user-card h3 {
   font-size: 1.25rem;
@@ -60,7 +59,7 @@
 }
 
 .add-button {
-background-color: transparent;
+  background-color: transparent;
   box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
   color: white;
   border: none;
@@ -281,18 +280,25 @@ h2 {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
+.modal h3 {
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
 .modal {
-  background: #fff;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px #ff5e00, 0 0 16px #ff9900;
   padding: 2rem;
   border-radius: 8px;
   min-width: 300px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .modal-actions {
@@ -307,4 +313,46 @@ h2 {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+.delete-btn:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #1a0a00;
+}
+.cancel-btn {
+  background: transparent;
+  box-shadow: 0 0 8px #ff5e00, 0 0 16px #ff9900;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.cancel-btn:hover {
+background-color: #ff9900;
+  transform: translateY(-6px);
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
+}
+
+/* Total scrollbar area */
+::-webkit-scrollbar {
+  width: 8px; /* for vertical scrollbar */
+  height: 8px; /* for horizontal scrollbar */
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+
+/* Thumb (the part you drag) */
+::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-radius: 4px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5e00;
 }

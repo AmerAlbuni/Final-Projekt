@@ -268,7 +268,7 @@ const AdminUsers = () => {
               <p>Möchtest du den Benutzer <strong>{userToDelete?.name}</strong> wirklich löschen?</p>
               <div className="modal-actions">
                 <button onClick={confirmDelete} className="delete-btn">Löschen</button>
-                <button onClick={closeDeleteModal}>Abbrechen</button>
+                <button className="cancel-btn" onClick={closeDeleteModal}>Abbrechen</button>
               </div>
             </div>
           </div>
