@@ -356,3 +356,12 @@ background-color: #ff9900;
 ::-webkit-scrollbar-thumb:hover {
   background: #ff5e00;
 }
+
+/* ✅ Prevent wide stretching of form */
+.form-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}

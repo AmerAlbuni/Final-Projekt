@@ -137,57 +137,60 @@ const AdminUsers = () => {
       <div className="admin-users-container">
         <h1 className='user-h1'> Manage Users</h1>
 
-        <form onSubmit={handleAddUser}>
-          <div className='user-form'>
-            <h2>Add New User</h2>
-            {message && <p>{message}</p>}
-            {error && <p>{error}</p>}
+        {/* ✅ Wrapped form inside form-container */}
+        <div className="form-container">
+          <form onSubmit={handleAddUser}>
+            <div className='user-form'>
+              <h2>Add New User</h2>
+              {message && <p>{message}</p>}
+              {error && <p>{error}</p>}
 
-            <input
-              className='admin-input'
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              placeholder="Name"
-            />
+              <input
+                className='admin-input'
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                placeholder="Name"
+              />
 
-            <input
-              className='admin-input'
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              type="email"
-              placeholder="Email"
-            />
+              <input
+                className='admin-input'
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                type="email"
+                placeholder="Email"
+              />
 
-            <PasswordInput
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="Password"
-            />
+              <PasswordInput
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Password"
+              />
 
-            <Select
-              classNamePrefix="react-select"
-              options={[
-                { value: 'Admin', label: 'Admin' },
-                { value: 'TeamLead', label: 'TeamLead' },
-                { value: 'Member', label: 'Member' },
-              ]}
-              value={{ value: form.role, label: form.role }}
-              onChange={(selected) => setForm({ ...form, role: selected.value })}
-              placeholder="Select Role"
-              menuPosition="fixed"
-              menuPlacement="auto"
-            />
+              <Select
+                classNamePrefix="react-select"
+                options={[
+                  { value: 'Admin', label: 'Admin' },
+                  { value: 'TeamLead', label: 'TeamLead' },
+                  { value: 'Member', label: 'Member' },
+                ]}
+                value={{ value: form.role, label: form.role }}
+                onChange={(selected) => setForm({ ...form, role: selected.value })}
+                placeholder="Select Role"
+                menuPosition="fixed"
+                menuPlacement="auto"
+              />
 
-            <button className='add-button' type="submit" disabled={formLoading}>
-              {formLoading ? 'Creating...' : ' Add User'}
-            </button>
-          </div>
-        </form>
+              <button className='add-button' type="submit" disabled={formLoading}>
+                {formLoading ? 'Creating...' : ' Add User'}
+              </button>
+            </div>
+          </form>
+        </div>
 
         {loading ? (
           <p>Loading users...</p>
