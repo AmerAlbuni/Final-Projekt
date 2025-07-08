@@ -34,3 +34,15 @@ body {
   padding: 20px;
   overflow-y: auto;
 }
+
+/* ✅ Mobile push behavior */
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    display: flex;
+    transition: all 0.3s ease;
+  }
+
+  .main-content-wrapper.push-content .content-area {
+    margin-left: 180px; /* Same as sidebar open width */
+  }
+}
