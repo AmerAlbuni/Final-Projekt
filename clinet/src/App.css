@@ -21,10 +21,11 @@ body {
 /* Sidebar */
 .sidebar {
   color: white;
-  padding: 10px;
-  width: 240px; /* or whatever fixed width you're using */
+  padding: 20px;
+  width: 220px; /* or whatever fixed width you're using */
   overflow-y: auto;
   flex-shrink: 0;
+  height: 90vh;
 }
 
 /* Main content area */

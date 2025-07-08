@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100vh;
+  margin-left: 12rem;
   align-items: center;
   justify-content: center;
 }
