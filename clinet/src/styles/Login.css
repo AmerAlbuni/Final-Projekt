@@ -116,3 +116,19 @@
   transition: color 0.3s ease-in-out;
 }
 
+.language-login {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 22px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #CF9031;
+  width: 140px;
+}

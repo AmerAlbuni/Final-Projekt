@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <div className="card">
-      <div className="language">
+      <div className="language-login">
           <Globe className="globe-icon" />
         <select
           className="language-select"
