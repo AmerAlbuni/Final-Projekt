@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext'; // ✅ Import it
 import './App.css';
-import './i18n';
+
 import socket from './socket';
 
 socket.connect();

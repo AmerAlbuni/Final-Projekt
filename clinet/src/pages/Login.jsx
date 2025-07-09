@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
-import { useNavigate, Link } from 'react-router-dom'; // ✅ Added Link
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.css';
-import { Globe } from 'lucide-react'; // ✅ Importing Globe icon
 
 const Login = () => {
-  const { i18n, t } = useTranslation();
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -40,36 +37,15 @@ const Login = () => {
       }
     } catch (err) {
       console.error('❌ Login failed:', err);
-      setError(t('login.error') || 'Invalid credentials or server error.');
+      setError('Invalid email or password');
     }
   };
 
   return (
     <div className="card">
-      <div className="language-login">
-          <Globe className="globe-icon" />
-        <select
-          className="language-select"
-         
-          value={i18n.language}
-          onChange={(e) => {
-            const lang = e.target.value;
-            i18n.changeLanguage(lang);
-            localStorage.setItem("lang", lang);
-          }}
-          
-        >
-          
-          <option value="en">🇺🇸 English</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="ar">🇸🇦 العربية</option>
-        </select>
-        
-      </div>
-
       <div className="card2">
         <form className="form" onSubmit={handleSubmit}>
-          <p id="heading">{t('login.title')}</p>
+          <p id="heading">Welcome back!</p>
 
           {error && <p className="error-message">{error}</p>}
 
@@ -81,7 +57,7 @@ const Login = () => {
             <input
               type="email"
               className="input-field"
-              placeholder={t('login.email')}
+              placeholder="Email address"
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -107,7 +83,7 @@ const Login = () => {
             <input
               type={showPassword ? 'text' : 'password'}
               className="input-field"
-              placeholder={t('login.password')}
+              placeholder="Password"
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -115,7 +91,7 @@ const Login = () => {
             />
           </div>
 
-          {/* ✅ Forgot Password Link */}
+          {/* Forgot Password Link */}
           <div>
             <Link to="/forgot-password" className="btn2">
               Forgot Password?
@@ -125,7 +101,7 @@ const Login = () => {
           {/* Submit */}
           <div className="btn">
             <button type="submit" className="button1">
-              {t('login.button')}
+              Login
             </button>
           </div>
         </form>
