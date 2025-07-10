@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext"; // ✅ Import AuthContext
+import Select from 'react-select';
 
 const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
   const { token } = useAuth(); // ✅ Get token from context
@@ -95,17 +96,16 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           onChange={(e) => setForm({ ...form, dueDate: e.target.value })}
         />
 
-        <select
+        <Select
+          className="react-select"
+          classNamePrefix="react-select"
           value={form.assignee}
-          onChange={(e) => setForm({ ...form, assignee: e.target.value })}
-        >
-          <option value="">Unassigned</option>
-          {users.map((user) => (
-            <option key={user._id} value={user._id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
+          onChange={(e) => setForm({ ...form, assignee: e })}
+          options={users.map((user) => ({
+            value: user._id,
+            label: user.name,
+          }))}
+        />
 
         <div>
           <button style={{ marginRight: "0.5rem", backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="button" onClick={onClose}>
