@@ -60,7 +60,19 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          maxWidth: "600px",
+          margin: "0 auto",
+          padding: "1rem",
+          backgroundColor: "transparent",
+          borderRadius: "0.6rem",
+          boxShadow: "0 4px 12px #ff9900, 0 4px 12px #ff5e00",
+          marginTop: "2rem",
+        }}>
         <h2>Create Task</h2>
 
         <input
@@ -96,11 +108,11 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
         </select>
 
         <div>
-          <button type="button" onClick={onClose}>
+          <button style={{ marginRight: "0.5rem", backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="button" onClick={onClose}>
             Cancel
           </button>
 
-          <button type="submit">Create</button>
+          <button style={{ backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="submit">Create</button>
         </div>
       </form>
     </div>
