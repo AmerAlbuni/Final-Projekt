@@ -16,15 +16,7 @@ export const createTask = async (req, res) => {
       return res.status(404).json({ message: 'Project not found' });
     }
 
-    // ✅ TeamLead can only create tasks for their own team
-    if (req.user.role === 'TeamLead') {
-      const userTeamId = req.user.team?._id?.toString() || req.user.team?.toString();
-      if (!userTeamId || projectData.team?.toString() !== userTeamId) {
-        return res.status(403).json({
-          message: 'You can only create tasks for your own team\'s projects.',
-        });
-      }
-    }
+    // 🟢 Removed team check: TeamLeads can now assign to any project
 
     const task = await Task.create({
       title,
@@ -44,7 +36,6 @@ export const createTask = async (req, res) => {
         link: `/member/tasks/${task._id}`,
       });
 
-      // ✅ Emit real-time notification
       if (req.io) {
         req.io.to(assignee.toString()).emit('newNotification', {
           message: notification.message,
@@ -139,7 +130,6 @@ export const getTaskById = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
 
 // ✅ Delete task (TeamLead only)
 export const deleteTask = async (req, res) => {

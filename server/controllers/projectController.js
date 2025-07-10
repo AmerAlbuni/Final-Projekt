@@ -26,13 +26,12 @@ export const getProjects = async (req, res) => {
   try {
     let projects;
 
-    if (req.user.role === 'Admin' || req.user.role === 'TeamLead') {
+    if (req.user.role === 'Admin') {
       projects = await Project.find().populate('team');
     } else if (req.user.role === 'TeamLead') {
       if (!req.user.team) {
         return res.status(403).json({ message: 'You must be assigned to a team to view projects.' });
       }
-
       projects = await Project.find({ team: req.user.team }).populate('team');
     } else {
       return res.status(403).json({ message: 'Access denied' });

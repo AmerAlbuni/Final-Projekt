@@ -23,7 +23,7 @@ const TeamLeadKanban = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await api.get('/projects', {
+        const res = await api.get('/projects/team', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProjects(res.data);
@@ -31,11 +31,11 @@ const TeamLeadKanban = () => {
           setProjectId(res.data[0]._id);
           setProjectError('');
         } else {
-          setProjectError('⚠️ No projects found. Please create one first.');
+          setProjectError('⚠️ No projects found for your team. Please create one.');
         }
       } catch (err) {
-        console.error('Failed to load projects', err);
-        setProjectError('❌ Failed to fetch projects.');
+        console.error('Failed to load team projects', err);
+        setProjectError('❌ Failed to fetch team projects.');
       }
     };
     fetchProjects();
