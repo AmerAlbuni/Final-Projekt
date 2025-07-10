@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext"; // ✅ Import AuthContext
+import Select from 'react-select';
 
 const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
   const { token } = useAuth(); // ✅ Get token from context
@@ -60,7 +61,19 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          maxWidth: "600px",
+          margin: "0 auto",
+          padding: "1rem",
+          backgroundColor: "transparent",
+          borderRadius: "0.6rem",
+          boxShadow: "0 4px 12px #ff9900, 0 4px 12px #ff5e00",
+          marginTop: "2rem",
+        }}>
         <h2>Create Task</h2>
 
         <input
@@ -83,24 +96,23 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           onChange={(e) => setForm({ ...form, dueDate: e.target.value })}
         />
 
-        <select
+        <Select
+          className="react-select"
+          classNamePrefix="react-select"
           value={form.assignee}
-          onChange={(e) => setForm({ ...form, assignee: e.target.value })}
-        >
-          <option value="">Unassigned</option>
-          {users.map((user) => (
-            <option key={user._id} value={user._id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
+          onChange={(e) => setForm({ ...form, assignee: e })}
+          options={users.map((user) => ({
+            value: user._id,
+            label: user.name,
+          }))}
+        />
 
         <div>
-          <button type="button" onClick={onClose}>
+          <button style={{ marginRight: "0.5rem", backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="button" onClick={onClose}>
             Cancel
           </button>
 
-          <button type="submit">Create</button>
+          <button style={{ backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="submit">Create</button>
         </div>
       </form>
     </div>
