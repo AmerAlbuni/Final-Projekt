@@ -181,6 +181,11 @@ const TeamLeadKanban = () => {
                           </button>
                         </div>
                         <p>{task.assignee?.name || 'Unassigned'}</p>
+                        {task.dueDate && (
+                          <p className="task-due">
+                            📅 {new Date(task.dueDate).toLocaleDateString('de-DE')}
+                          </p>
+                        )}
                       </div>
                     ))}
                 </div>

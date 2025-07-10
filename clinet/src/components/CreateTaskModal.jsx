@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
-import { useAuth } from "../context/AuthContext"; // ✅ Import AuthContext
+import { useAuth } from "../context/AuthContext";
 import Select from 'react-select';
+import DatePicker from "react-datepicker";
+import { de } from "date-fns/locale";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
-  const { token } = useAuth(); // ✅ Get token from context
+  const { token } = useAuth();
 
   const [form, setForm] = useState({
     title: "",
     description: "",
     assignee: "",
-    dueDate: "",
+    dueDate: null, // will be a Date object now
   });
 
   const [users, setUsers] = useState([]);
@@ -19,9 +22,7 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
     const fetchTeam = async () => {
       try {
         const res = await api.get("/teams/my-team", {
-          headers: {
-            Authorization: `Bearer ${token}`, // ✅ Add token to fetch members
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data.members);
       } catch (err) {
@@ -34,25 +35,18 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!projectId) {
-      console.error("No project ID found. Cannot create task.");
-      return;
-    }
+    if (!projectId) return console.error("No project ID found");
 
-    // Stelle sicher, dass nur die ID gesendet wird
     const taskData = {
       ...form,
-      assignee: form.assignee?.value || "", // Nur die ID!
+      assignee: form.assignee?.value || "",
+      dueDate: form.dueDate?.toISOString().split("T")[0], // Format: yyyy-mm-dd
       project: projectId,
     };
 
-    console.log("🧪 Submitting task:", taskData); // ✅ Debug log for request payload
-
     try {
       await api.post("/tasks", taskData, {
-        headers: {
-          Authorization: `Bearer ${token}`, // ✅ Send token with POST
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       onTaskCreated();
       onClose();
@@ -63,7 +57,8 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}
+      <form
+        onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -75,7 +70,8 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           borderRadius: "0.6rem",
           boxShadow: "0 4px 12px #ff9900, 0 4px 12px #ff5e00",
           marginTop: "2rem",
-        }}>
+        }}
+      >
         <h2>Create Task</h2>
 
         <input
@@ -92,10 +88,14 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           onChange={(e) => setForm({ ...form, description: e.target.value })}
         />
 
-        <input
-          type="date"
-          value={form.dueDate}
-          onChange={(e) => setForm({ ...form, dueDate: e.target.value })}
+        {/* 🗓️ German-formatted datepicker */}
+        <DatePicker
+          selected={form.dueDate}
+          onChange={(date) => setForm({ ...form, dueDate: date })}
+          dateFormat="dd.MM.yyyy"
+          locale={de}
+          placeholderText="Set due date"
+          className="custom-datepicker"
         />
 
         <Select
@@ -110,11 +110,29 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
         />
 
         <div>
-          <button style={{ marginRight: "0.5rem", backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="button" onClick={onClose}>
+          <button
+            style={{
+              marginRight: "0.5rem",
+              backgroundColor: "#ac712e",
+              color: "white",
+              borderRadius: "0.5rem",
+            }}
+            type="button"
+            onClick={onClose}
+          >
             Cancel
           </button>
 
-          <button style={{ backgroundColor: "#ac712e", color: "white", borderRadius: "0.5rem" }} type="submit">Create</button>
+          <button
+            style={{
+              backgroundColor: "#ac712e",
+              color: "white",
+              borderRadius: "0.5rem",
+            }}
+            type="submit"
+          >
+            Create
+          </button>
         </div>
       </form>
     </div>

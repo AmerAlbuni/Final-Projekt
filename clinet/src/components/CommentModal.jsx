@@ -58,6 +58,13 @@ const CommentModal = ({ task, onClose }) => {
           💬 Comments for: {task?.title || 'Unknown Task'}
         </h3>
 
+        {task?.dueDate && (
+          <p>
+            <strong>📅 Due:</strong>{" "}
+            {new Date(task.dueDate).toLocaleDateString('de-DE')}
+          </p>
+        )}
+
         {taskId && (
           <CommentList key={commentsVersion} taskId={taskId} onReply={setReplyTo} />
         )}

@@ -66,7 +66,9 @@ const MemberTaskBoard = () => {
                     <p>
                       <small>
                         Due:{" "}
-                        {task.dueDate ? task.dueDate.substring(0, 10) : "N/A"}
+                        {task.dueDate
+                          ? new Date(task.dueDate).toLocaleDateString("de-DE")
+                          : "N/A"}
                       </small>
                     </p>
                     <p>
