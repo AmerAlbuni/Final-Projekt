@@ -52,13 +52,12 @@ const MemberTaskBoard = () => {
                   <article
                     key={task._id}
                     style={{
-                      backgroundColor: "#f9f9f9",
+                      backgroundColor: "transparent",
+                      boxShadow: "0 0 20px #ff9900, 0 0 20px #ff5e00",
                       padding: "1rem",
                       marginBottom: "1rem",
-                      borderLeft: "4px solid #4f46e5",
                       borderRadius: "8px",
-                      boxShadow: "0 2px 6px rgba(0, 0, 0, 0.08)",
-                      color: "#1f2937", // dark gray for text
+                      color: "white", // dark gray for text
                     }}
                   >
                     <h3>{task.title}</h3>
