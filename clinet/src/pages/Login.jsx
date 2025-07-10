@@ -37,7 +37,12 @@ const Login = () => {
       }
     } catch (err) {
       console.error('❌ Login failed:', err);
-      setError('Invalid email or password');
+      const message = err?.response?.data?.message;
+      if (message) {
+        setError(message);
+      } else {
+        setError('Login failed. Please try again.');
+      }
     }
   };
 

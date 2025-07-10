@@ -57,19 +57,17 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // ✅ Populate team info
     const user = await User.findOne({ email }).populate("team", "name");
 
     if (!user)
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Email is not registered' });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Incorrect email or password' });
 
     const token = generateToken(user._id);
 
-    // ✅ Include team in response
     res.json({
       token,
       user: {
@@ -107,7 +105,7 @@ export const forgotPassword = async (req, res) => {
     user.resetPasswordExpires = Date.now() + 60 * 60 * 1000; // 1 hour
     await user.save();
 
-  const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
+    const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
 
     await sendEmail({
       to: user.email,
@@ -120,7 +118,6 @@ export const forgotPassword = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 // @desc    Reset Password
 export const resetPassword = async (req, res) => {

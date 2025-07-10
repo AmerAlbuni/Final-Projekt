@@ -132,3 +132,16 @@
   border: 2px solid #CF9031;
   width: 140px;
 }
+
+/* 🔴 Error message above the login form */
+.error-message {
+  background-color:rgba(0, 0, 0, 0.438);
+  color: #ff0000;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgb(255, 153, 0);
+font-size: 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
