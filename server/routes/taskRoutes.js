@@ -4,6 +4,8 @@ import {
   getTasks,
   updateTaskStatus,
   getAssignedTasks,
+  getTaskById,
+  deleteTask, // ✅ NEW: import delete controller
 } from '../controllers/taskController.js';
 import { protect, isTeamLead, isMember, authorize } from '../middleware/authMiddleware.js';
 
@@ -23,5 +25,11 @@ router.patch('/:taskId/status', isTeamLead, updateTaskStatus);
 
 // ✅ Members can view their assigned tasks
 router.get('/assigned', isMember, getAssignedTasks);
+
+// ✅ Team Leads can delete tasks
+router.delete('/:taskId', isTeamLead, deleteTask); // ✅ NEW
+
+// ✅ New: Any logged-in user can view a task by ID
+router.get('/:id', getTaskById); // 👈 Keep this LAST
 
 export default router;

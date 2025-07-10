@@ -53,3 +53,16 @@ export const markAsRead = async (req, res) => {
     res.status(500).json({ message: 'Failed to update notification', error: err.message });
   }
 };
+
+// ✅ Delete a notification by ID
+export const deleteNotification = async (req, res) => {
+  try {
+    const notification = await Notification.findByIdAndDelete(req.params.id);
+    if (!notification) {
+      return res.status(404).json({ message: 'Notification not found' });
+    }
+    res.json({ message: 'Notification deleted' });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to delete notification', error: err.message });
+  }
+};

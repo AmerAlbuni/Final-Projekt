@@ -1,9 +1,4 @@
-/* 🌌 Kanban Layout – Clean & Responsive */
 
-/* Wrapper */
-
-
-/* Glass-style Container */
 .kanban-container {
   background-color: transparent;
   box-shadow: 0 0 20px #ff9900, 0 0 20px #ff5e00;
@@ -291,4 +286,24 @@
   .react-select__control {
     max-width: 100% !important;
   }
+}
+
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e11d48;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.delete-btn:hover {
+  color: #be123c;
 }

@@ -41,7 +41,7 @@ export const createTask = async (req, res) => {
       const notification = await Notification.create({
         user: assignee,
         message: `You have been assigned to task: "${task.title}"`,
-        link: `/tasks/${task._id}`,
+        link: `/member/tasks/${task._id}`,
       });
 
       // ✅ Emit real-time notification
@@ -110,11 +110,59 @@ export const updateTaskStatus = async (req, res) => {
 export const getAssignedTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ assignee: req.user._id })
-      .populate('project', 'title'); // ✅ keep this only
+      .populate('project', 'title');
 
     res.json(tasks);
   } catch (err) {
     console.error('❌ Failed to fetch assigned tasks:', err.message);
     res.status(500).json({ message: 'Failed to fetch assigned tasks' });
+  }
+};
+
+// ✅ Get task by ID (NEW)
+export const getTaskById = async (req, res) => {
+  const { id } = req.params;
+
+  if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+    return res.status(400).json({ message: 'Invalid task ID format' });
+  }
+
+  try {
+    const task = await Task.findById(id).populate('project', 'title');
+    if (!task) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+
+    res.json(task);
+  } catch (err) {
+    console.error('❌ Failed to fetch task by ID:', err.message);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+// ✅ Delete task (TeamLead only)
+export const deleteTask = async (req, res) => {
+  const { taskId } = req.params;
+
+  try {
+    const task = await Task.findById(taskId);
+    if (!task) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+
+    // ✅ Ensure TeamLead can only delete tasks from their own team
+    const userTeamId = req.user.team?._id?.toString() || req.user.team?.toString();
+    if (req.user.role !== "TeamLead" || task.team?.toString() !== userTeamId) {
+      return res.status(403).json({
+        message: "You can only delete tasks from your own team.",
+      });
+    }
+
+    await task.deleteOne();
+    res.json({ message: "Task deleted successfully" });
+  } catch (err) {
+    console.error("❌ Failed to delete task:", err.message);
+    res.status(500).json({ message: "Failed to delete task" });
   }
 };

@@ -17,6 +17,7 @@ import TeamLeadChat from "./pages/lead/TeamLeadChat";
 
 import MemberDashboard from "./pages/member/MemberDashboard";
 import MemberTaskBoard from "./pages/member/MemberTaskBoard";
+import MemberTaskDetail from "./pages/member/MemberTaskDetail"; // ✅ NEW
 import MemberTeamPage from "./pages/member/MemberTeamPage";
 import MemberChat from "./pages/member/MemberChat";
 
@@ -35,9 +36,9 @@ function App() {
       <Routes>
         {/* Public */}
         <Route path="/" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />{" "}
-        {/* ✅ NEW */}
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+
         {/* Admin Routes */}
         <Route
           path="/admin"
@@ -89,6 +90,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         {/* Team Lead Routes */}
         <Route
           path="/lead"
@@ -150,6 +152,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         {/* Member Routes */}
         <Route
           path="/member"
@@ -167,6 +170,16 @@ function App() {
             <ProtectedRoute roles={["Member"]}>
               <Layout>
                 <MemberTaskBoard />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/member/tasks/:id"
+          element={
+            <ProtectedRoute roles={["Member"]}>
+              <Layout>
+                <MemberTaskDetail />
               </Layout>
             </ProtectedRoute>
           }
@@ -191,6 +204,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         {/* 🔔 Universal Notifications Route */}
         <Route
           path="/notifications"
@@ -202,6 +216,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         {/* 404 Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>

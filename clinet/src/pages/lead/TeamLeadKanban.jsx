@@ -95,6 +95,21 @@ const TeamLeadKanban = () => {
     setSelectedTask(task);
   };
 
+  const handleDeleteTask = async (taskId, e) => {
+    e.stopPropagation();
+    const confirm = window.confirm("Are you sure you want to delete this task?");
+    if (!confirm) return;
+
+    try {
+      await api.delete(`/tasks/${taskId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setTasks(prev => prev.filter(task => task._id !== taskId));
+    } catch (err) {
+      console.error("Failed to delete task", err);
+    }
+  };
+
   const openModal = () => {
     if (!projectId) {
       alert('Please select a project first.');
@@ -116,14 +131,12 @@ const TeamLeadKanban = () => {
         <Select
           className="react-select"
           classNamePrefix="react-select"
-          value={projectId}
-          onChange={e => setProjectId(e.target.value)}
-        >
-          <option value="">-- Select a Project --</option>
-          {projects.map(project => (
-            <option key={project._id} value={project._id}>{project.title}</option>
-          ))}
-        </Select>
+          value={projects.find(p => p._id === projectId)}
+          onChange={option => setProjectId(option._id)}
+          getOptionLabel={(e) => e.title}
+          getOptionValue={(e) => e._id}
+          options={projects}
+        />
 
         {loading ? (
           <p>Loading tasks...</p>
@@ -158,7 +171,15 @@ const TeamLeadKanban = () => {
                         onDragStart={e => e.dataTransfer.setData('taskId', task._id)}
                         onClick={() => handleTaskClick(task)}
                       >
-                        <h4>{task.title}</h4>
+                        <div className="task-header">
+                          <h4>{task.title}</h4>
+                          <button
+                            className="delete-btn"
+                            onClick={(e) => handleDeleteTask(task._id, e)}
+                          >
+                            ❌
+                          </button>
+                        </div>
                         <p>{task.assignee?.name || 'Unassigned'}</p>
                       </div>
                     ))}

@@ -112,3 +112,17 @@
   
  
 }
+
+
+.notification-delete {
+  background: transparent;
+  border: none;
+  color: red;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  float: right;
+}
+.notification-delete:hover {
+  color: darkred;
+}
