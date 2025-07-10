@@ -39,8 +39,10 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
       return;
     }
 
+    // Stelle sicher, dass nur die ID gesendet wird
     const taskData = {
       ...form,
+      assignee: form.assignee?.value || "", // Nur die ID!
       project: projectId,
     };
 
