@@ -6,6 +6,9 @@
   background: transparent;
   color: #eee;
 }
+.sidebar-header{
+  margin-top: 2rem
+}
 
 /* User name */
 .user-name {
