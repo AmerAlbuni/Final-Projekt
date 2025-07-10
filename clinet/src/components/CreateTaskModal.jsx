@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import Select from 'react-select';
+import Select from "react-select";
 import DatePicker from "react-datepicker";
 import { de } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
@@ -13,7 +13,7 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
     title: "",
     description: "",
     assignee: "",
-    dueDate: null, // will be a Date object now
+    dueDate: null,
   });
 
   const [users, setUsers] = useState([]);
@@ -37,10 +37,30 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
     if (!projectId) return console.error("No project ID found");
 
+    // 🧪 Debug: fetch selected project info
+    try {
+      const res = await api.get(`/projects/${projectId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const selectedProject = res.data;
+      console.log("🧪 Selected Project:", selectedProject);
+      console.log("🧪 Project Team:", selectedProject.team);
+    } catch (err) {
+      console.error("❌ Failed to fetch project:", err.response?.data || err.message);
+    }
+
+    // 🧪 Debug: decode current user's team from JWT
+    try {
+      const decodedToken = JSON.parse(atob(token.split(".")[1]));
+      console.log("🧪 User team from token:", decodedToken.team);
+    } catch (err) {
+      console.error("❌ Failed to decode token:", err.message);
+    }
+
     const taskData = {
       ...form,
       assignee: form.assignee?.value || "",
-      dueDate: form.dueDate?.toISOString().split("T")[0], // Format: yyyy-mm-dd
+      dueDate: form.dueDate?.toISOString().split("T")[0],
       project: projectId,
     };
 
