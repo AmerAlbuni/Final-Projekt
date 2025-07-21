@@ -1,0 +1,54 @@
+.create-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px #ff9900, 0 4px 12px #ff5e00;
+}
+
+.create-task-form h2 {
+  margin: 0;
+}
+
+.create-task-form input,
+.create-task-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.create-task-form .custom-datepicker {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.create-task-form .react-select__control {
+  border-radius: 0.4rem;
+}
+
+.create-task-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.create-task-buttons button {
+  background-color: transparent;
+  box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-task-buttons button:hover {
+  background-color: #ff9900;
+}

@@ -5,6 +5,7 @@ import Select from "react-select";
 import DatePicker from "react-datepicker";
 import { de } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
+import '../styles/CreateTaskModal.css';
 
 const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
   const { token } = useAuth();
@@ -34,22 +35,17 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!projectId) return console.error("No project ID found");
 
-    // 🧪 Debug: fetch selected project info
     try {
       const res = await api.get(`/projects/${projectId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const selectedProject = res.data;
-      console.log("🧪 Selected Project:", selectedProject);
-      console.log("🧪 Project Team:", selectedProject.team);
+      console.log("🧪 Selected Project:", res.data);
     } catch (err) {
       console.error("❌ Failed to fetch project:", err.response?.data || err.message);
     }
 
-    // 🧪 Debug: decode current user's team from JWT
     try {
       const decodedToken = JSON.parse(atob(token.split(".")[1]));
       console.log("🧪 User team from token:", decodedToken.team);
@@ -77,21 +73,7 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          maxWidth: "600px",
-          margin: "0 auto",
-          padding: "1rem",
-          backgroundColor: "transparent",
-          borderRadius: "0.6rem",
-          boxShadow: "0 4px 12px #ff9900, 0 4px 12px #ff5e00",
-          marginTop: "2rem",
-        }}
-      >
+      <form className="create-task-form" onSubmit={handleSubmit}>
         <h2>Create Task</h2>
 
         <input
@@ -108,7 +90,6 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           onChange={(e) => setForm({ ...form, description: e.target.value })}
         />
 
-        {/* 🗓️ German-formatted datepicker */}
         <DatePicker
           selected={form.dueDate}
           onChange={(date) => setForm({ ...form, dueDate: date })}
@@ -129,35 +110,9 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           }))}
         />
 
-        <div>
-          <button
-            style={{
-              marginRight: "0.5rem",
-              backgroundColor: "transparent",
-              boxShadow: "0 0 20px #ff9900, 0 0 25px #ff5e00",
-              color: "white",
-              borderRadius: "0.5rem",
-              "&:hover": {
-                backgroundColor: "#ff9900",
-              },
-            }}
-            type="button"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-
-          <button
-            style={{
-              backgroundColor: "transparent",
-              boxShadow: "0 0 20px #ff9900, 0 0 25px #ff5e00",
-              color: "white",
-              borderRadius: "0.5rem",
-            }}
-            type="submit"
-          >
-            Create
-          </button>
+        <div className="create-task-buttons">
+          <button type="button" onClick={onClose}>Cancel</button>
+          <button type="submit">Create</button>
         </div>
       </form>
     </div>
