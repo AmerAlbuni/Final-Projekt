@@ -133,9 +133,13 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
           <button
             style={{
               marginRight: "0.5rem",
-              backgroundColor: "#ac712e",
+              backgroundColor: "transparent",
+              boxShadow: "0 0 20px #ff9900, 0 0 25px #ff5e00",
               color: "white",
               borderRadius: "0.5rem",
+              "&:hover": {
+                backgroundColor: "#ff9900",
+              },
             }}
             type="button"
             onClick={onClose}
@@ -145,7 +149,8 @@ const CreateTaskModal = ({ projectId, onClose, onTaskCreated }) => {
 
           <button
             style={{
-              backgroundColor: "#ac712e",
+              backgroundColor: "transparent",
+              boxShadow: "0 0 20px #ff9900, 0 0 25px #ff5e00",
               color: "white",
               borderRadius: "0.5rem",
             }}

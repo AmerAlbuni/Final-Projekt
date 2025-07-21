@@ -62,8 +62,12 @@
 .teamchat-inputbox .send {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: #ff9900;
+  background-color: transparent;
+  box-shadow: 0 0 20px #ff9900, 0 0 25px #ff5e00;
   border: none;
   color: #fff;
   cursor: pointer;
+}
+.teamchat-inputbox .send:hover {
+  background-color: #ff9900;
 }
