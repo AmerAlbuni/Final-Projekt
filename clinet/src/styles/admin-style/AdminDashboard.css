@@ -28,6 +28,8 @@
 .card-border-wrapper:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 40px #ff9900, 0 0 32px #ff5e00;
+  border: 3px solid #ff9900;
+  cursor: pointer;
 }
 
 /* Inner content */

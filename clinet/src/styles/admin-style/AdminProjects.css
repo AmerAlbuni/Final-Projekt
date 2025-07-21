@@ -114,6 +114,7 @@ form select {
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 14px #ff9900, 0 0 32px #ff5e00;
+  cursor: pointer;
 }
 
 .project-card h3 {

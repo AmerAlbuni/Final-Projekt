@@ -48,6 +48,7 @@
 .analytics-card:hover {
     transform: translateY(-6px);
   box-shadow: 0 0 40px #ff9900, 0 0 50px #ff5e00;
+  cursor: pointer;
 }
 
 .analytics-h1{
