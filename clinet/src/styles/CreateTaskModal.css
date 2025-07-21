@@ -16,10 +16,11 @@
 
 .create-task-form input,
 .create-task-form textarea {
-  width: 100%;
+  width: 90%;
   padding: 0.5rem;
   border-radius: 0.4rem;
   border: 1px solid #ccc;
+
 }
 
 .create-task-form .custom-datepicker {
