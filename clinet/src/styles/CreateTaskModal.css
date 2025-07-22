@@ -8,6 +8,8 @@
   background-color: transparent;
   border-radius: 0.6rem;
   box-shadow: 0 4px 12px #ff9900, 0 4px 12px #ff5e00;
+  margin-bottom: 2rem;
+  height: 90%;
 }
 
 .create-task-form h2 {
