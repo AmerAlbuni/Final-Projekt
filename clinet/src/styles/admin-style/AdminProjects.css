@@ -62,6 +62,7 @@ text-shadow: 0 0 5px #fff,
 form input,
 form select {
   padding: 0.6rem;
+  margin-top: 0.6rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   width: 100%;
