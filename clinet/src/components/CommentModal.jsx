@@ -71,13 +71,14 @@ const CommentModal = ({ task, onClose }) => {
 
         <form onSubmit={handleSubmit}>
           <input
+            style={{ margin: '0 0.5rem 0.5rem 0' }}
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder={replyTo ? `Reply to ${replyTo.user?.name}` : 'Write a comment...'}
             required
             autoFocus
           />
-          <button type="submit">Send</button>
+          <button className='btn btn-primary' type="submit">Send</button>
           {replyTo && (
             <button type="button" onClick={() => setReplyTo(null)}>
               Cancel Reply
@@ -85,7 +86,7 @@ const CommentModal = ({ task, onClose }) => {
           )}
         </form>
 
-        <button onClick={onClose}>Close</button>
+        <button className='btn btn-primary' onClick={onClose}>Close</button>
       </div>
     </div>
   );
