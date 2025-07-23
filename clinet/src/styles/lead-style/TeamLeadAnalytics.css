@@ -49,3 +49,9 @@
   font-weight: bold;
   color: #eab033;
 }
+.donut-chart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: auto;
+}
