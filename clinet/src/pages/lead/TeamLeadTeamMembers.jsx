@@ -16,6 +16,9 @@ const TeamLeadTeamMembers = () => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [memberToDelete, setMemberToDelete] = useState(null);
+
   useEffect(() => {
     const fetchTeamMembers = async () => {
       try {
@@ -43,13 +46,10 @@ const TeamLeadTeamMembers = () => {
     setMessage("");
 
     try {
-      console.log("📤 Sending invite request:", { email, role });
-
       const res = await api.post("/teams/invite", { email, role }, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      console.log("✅ Invite response:", res.data);
       setMessage(res.data.message);
       setEmail("");
       setRole("Member");
@@ -66,9 +66,11 @@ const TeamLeadTeamMembers = () => {
     }
   };
 
-  const handleRemove = async (memberId) => {
+  const confirmDelete = async () => {
+    if (!memberToDelete) return;
+
     try {
-      await api.delete(`/teams/${teamId}/member/${memberId}`, {
+      await api.delete(`/teams/${teamId}/member/${memberToDelete._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -76,10 +78,24 @@ const TeamLeadTeamMembers = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMembers(res.data.members || []);
+      setMessage("🗑️ The user was successfully removed.");
     } catch (err) {
       console.error("❌ Failed to remove member:", err);
-      setError("Could not remove team member.");
+      setError("⚠️ Failed to remove the user.");
+    } finally {
+      setShowDeleteModal(false);
+      setMemberToDelete(null);
     }
+  };
+
+  const openDeleteModal = (member) => {
+    setMemberToDelete(member);
+    setShowDeleteModal(true);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setMemberToDelete(null);
   };
 
   return (
@@ -118,7 +134,11 @@ const TeamLeadTeamMembers = () => {
         </form>
 
         {error && <p className="team-error">{error}</p>}
-        {message && <p className="team-message">{message}</p>}
+        {message && (
+          <p className={`team-message ${message.includes("removed") ? "delete" : ""}`}>
+            {message}
+          </p>
+        )}
 
         {loading ? (
           <p className="team-loading">Loading members...</p>
@@ -133,12 +153,27 @@ const TeamLeadTeamMembers = () => {
                 <div className="member-role">Role: {member.role}</div>
                 <button
                   className="remove-button"
-                  onClick={() => handleRemove(member._id)}
+                  onClick={() => openDeleteModal(member)}
                 >
                   Remove
                 </button>
               </div>
             ))}
+          </div>
+        )}
+
+        {showDeleteModal && memberToDelete && (
+          <div className="modal-backdrop-team">
+            <div className="modal-team">
+              <h3>Delete User</h3>
+              <p>
+                Do you want to remove <strong>{memberToDelete.name}</strong> from your team?
+              </p>
+              <div className="modal-actions-team">
+                <button onClick={confirmDelete} className="delete-btn-team">Delete</button>
+                <button className="cancel-btn-team" onClick={cancelDelete}>Cancel</button>
+              </div>
+            </div>
           </div>
         )}
       </div>

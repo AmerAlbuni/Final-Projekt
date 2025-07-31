@@ -54,9 +54,31 @@
 }
 
 .team-message {
-  color: #16a34a;
+  color: #16f26b;
   font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+  font-size:x-large;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+
+ 
+  animation: fadeInUp 0.4s ease;
 }
+
+.team-message.delete {
+  color: #ff0000;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+  text-shadow: black 0px 0px 5px;
+  font-size:x-large;
+  
+  padding: 0.75rem 1.25rem;
+
+  animation: fadeInUp 0.4s ease;
+}
+
 
 .team-error {
   color: #dc2626;
@@ -183,4 +205,74 @@
   box-shadow: 0 0 10px #ff9900, 0 0 25px #ff5e00;
   border-radius: 0.5rem;
   z-index: 9999;
+}
+.modal-backdrop-team {
+   z-index: 9999; /* make sure it's above everything */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.modal-team h3 {
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.modal-team p {
+  color: #ddd;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.modal-team {
+  background: transparent;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px #ff5e00, 0 0 16px #ff9900;
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.modal-actions-team {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.delete-btn-team {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.delete-btn-team:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #1a0a00;
+}
+.cancel-btn-team{
+  background: transparent;
+  box-shadow: 0 0 8px #ff5e00, 0 0 16px #ff9900;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.cancel-btn-team:hover {
+background-color: #ff9900;
+  transform: translateY(-6px);
+  box-shadow: 0 0 10px #ff9900, 0 0 20px #ff5e00;
 }

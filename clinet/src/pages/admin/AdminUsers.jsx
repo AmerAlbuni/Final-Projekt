@@ -267,11 +267,11 @@ const AdminUsers = () => {
         {showDeleteModal && (
           <div className="modal-backdrop">
             <div className="modal">
-              <h3>Benutzer löschen</h3>
-              <p>Möchtest du den Benutzer <strong>{userToDelete?.name}</strong> wirklich löschen?</p>
+              <h3>Delet User</h3>
+              <p> Do you want to Delete <strong>{userToDelete?.name}</strong> as a User ? </p>
               <div className="modal-actions">
-                <button onClick={confirmDelete} className="delete-btn">Löschen</button>
-                <button className="cancel-btn" onClick={closeDeleteModal}>Abbrechen</button>
+                <button onClick={confirmDelete} className="delete-btn">Delete </button>
+                <button className="cancel-btn" onClick={closeDeleteModal}>Cancel</button>
               </div>
             </div>
           </div>
