@@ -236,17 +236,17 @@ const AdminTeams = () => {
         {showDeleteModal && (
           <div className="modal-backdrop">
             <div className="modal">
-              <h3>Team löschen</h3>
-              <p>Möchtest du das Team <strong>{teamToDelete?.name}</strong> wirklich löschen?</p>
+              <h3>Delete Team</h3>
+              <p>Are you sure you want to delete the team <strong>{teamToDelete?.name}</strong>?</p>
               <div className="modal-actions">
                 <button
                   className="delete-btn"
                   onClick={() => handleDeleteTeam(teamToDelete._id)}
                 >
-                  Löschen
+                  Delete
                 </button>
                 <button className="cancel-btn" onClick={closeDeleteModal}>
-                  Abbrechen
+                  Cancel
                 </button>
               </div>
             </div>

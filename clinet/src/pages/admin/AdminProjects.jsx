@@ -192,11 +192,11 @@ const AdminProjects = () => {
         {showDeleteModal && (
           <div className="modal-backdrop">
             <div className="modal">
-              <h3>Projekt löschen</h3>
-              <p>Möchtest du das Projekt <strong>{projectToDelete?.title}</strong> wirklich löschen?</p>
+              <h3>Delete project</h3>
+              <p>Are you sure you want to delete the project <strong>{projectToDelete?.title}</strong>?</p>
               <div className="modal-actions">
-                <button onClick={confirmDelete} className="delete-btn">Löschen</button>
-                <button onClick={closeDeleteModal} className="cancel-btn">Abbrechen</button>
+                <button onClick={confirmDelete} className="delete-btn">Delete</button>
+                <button onClick={closeDeleteModal} className="cancel-btn">Cancel</button>
               </div>
             </div>
           </div>
